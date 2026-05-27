@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLC — Presentazione Aziendale 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<script src="deck-stage.js"></script>
+<style>
+  :root {
+    --navy:       #0B1F3A;
+    --navy-mid:   #1E3A5F;
+    --red:        #C8102E;
+    --red-light:  #FDEEF1;
+    --warm-white: #F5F3EE;
+    --white:      #FFFFFF;
+    --text:       #1A1A2E;
+    --grey:       #8A96A3;
+    --steel:      #2A5298;
+    --grey-light: #E8EDF5;
+    --ff-h: 'Space Grotesk', sans-serif;
+    --ff-b: 'DM Sans', sans-serif;
+  }
+
+  /* ── GLOBAL SLIDE STYLES ── */
+  deck-stage section {
+    font-family: var(--ff-b);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .eyebrow {
+    font-family: var(--ff-h);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .eyebrow.light { color: rgba(255,255,255,.45); }
+
+  /* ── SLIDE 1: COVER ── */
+  #s1 {
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 120px;
+  }
+  #s1::before {
+    content: '';
+    position: absolute;
+    right: -100px; top: 50%;
+    transform: translateY(-50%);
+    width: 900px; height: 900px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,16,46,.1) 0%, transparent 60%);
+  }
+  #s1::after {
+    content: '';
+    position: absolute;
+    left: 38%; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent 10%, rgba(200,16,46,.2) 50%, transparent 90%);
+  }
+  #s1 .logo { height: 52px; margin-bottom: 60px; display: block; }
+  #s1 h1 {
+    font-family: var(--ff-h);
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -.03em;
+    line-height: 1.02;
+    margin-bottom: 28px;
+    max-width: 760px;
+  }
+  #s1 h1 em { font-style: normal; color: var(--red); }
+  #s1 .sub {
+    font-size: 22px;
+    color: rgba(255,255,255,.45);
+    max-width: 500px;
+    line-height: 1.6;
+    margin-bottom: 60px;
+  }
+  #s1 .meta {
+    display: flex;
+    gap: 48px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,.1);
+  }
+  #s1 .meta-item label {
+    font-family: var(--ff-h);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.3);
+    display: block;
+    margin-bottom: 4px;
+  }
+  #s1 .meta-item span {
+    font-family: var(--ff-h);
+    font-size: 15px;
+    color: rgba(255,255,255,.7);
+  }
+
+  /* ── SLIDE 2: SECTION DIVIDER ── */
+  .slide-divider {
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    padding: 0 120px;
+  }
+  .slide-divider .num {
+    font-family: var(--ff-h);
+    font-size: 160px;
+    font-weight: 700;
+    color: rgba(255,255,255,.12);
+    line-height: 1;
+    position: absolute;
+    left: 80px;
+    bottom: -20px;
+  }
+  .slide-divider h2 {
+    font-family: var(--ff-h);
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -.025em;
+    line-height: 1.05;
+    position: relative;
+    z-index: 1;
+  }
+  .slide-divider .sec-sub {
+    font-size: 20px;
+    color: rgba(255,255,255,.55);
+    margin-top: 16px;
+  }
+
+  /* ── SLIDE 3: CHI SIAMO ── */
+  #s3 {
+    background: var(--warm-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 0;
+  }
+  #s3 .left {
+    padding: 80px 80px 80px 120px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #s3 .right {
+    background: var(--navy);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+    gap: 32px;
+  }
+  #s3 h2 {
+    font-family: var(--ff-h);
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  #s3 .desc {
+    font-size: 18px;
+    color: var(--grey);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .stat-pill {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 28px;
+    background: rgba(255,255,255,.06);
+    border-radius: 12px;
+    border-left: 3px solid var(--red);
+  }
+  .stat-pill .num {
+    font-family: var(--ff-h);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .stat-pill .lbl {
+    font-family: var(--ff-h);
+    font-size: 13px;
+    color: rgba(255,255,255,.45);
+    letter-spacing: .03em;
+  }
+  .pill-em { color: var(--red); }
+
+  /* ── SLIDE 4: CORSI ── */
+  #s4 {
+    background: var(--white);
+    padding: 80px 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #s4 h2 {
+    font-family: var(--ff-h);
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -.02em;
+    margin-bottom: 48px;
+  }
+  .corsi-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 16px;
+  }
+  .corso-tile {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .corso-top {
+    background: var(--navy);
+    padding: 28px 24px 20px;
+  }
+  .corso-top.alt { background: var(--navy-mid); }
+  .corso-ico {
+    width: 44px; height: 44px;
+    background: rgba(200,16,46,.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 22px;
+  }
+  .corso-cat {
+    font-family: var(--ff-h);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.35);
+    margin-bottom: 6px;
+  }
+  .corso-title {
+    font-family: var(--ff-h);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .corso-body {
+    background: var(--warm-white);
+    padding: 16px 24px;
+  }
+  .corso-body p {
+    font-size: 13px;
+    color: var(--grey);
+    line-height: 1.5;
+  }
+
+  /* ── SLIDE 5: PERCHÉ BLC ── */
+  #s5 {
+    background: var(--navy);
+    padding: 80px 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #s5 h2 {
+    font-family: var(--ff-h);
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -.02em;
+    margin-bottom: 56px;
+  }
+  #s5 h2 em { font-style: normal; color: var(--red); }
+  .usp-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 16px;
+  }
+  .usp-card {
+    background: rgba(255,255,255,.05);
+    border-radius: 12px;
+    padding: 32px 28px;
+    border-top: 3px solid var(--red);
+  }
+  .usp-card .n {
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+  .usp-card h4 {
+    font-family: var(--ff-h);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .usp-card p { font-size: 14px; color: rgba(255,255,255,.45); line-height: 1.6; }
+
+  /* ── SLIDE 6: METODOLOGIA ── */
+  #s6 {
+    background: var(--warm-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  #s6 .left {
+    padding: 80px 60px 80px 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #s6 h2 {
+    font-family: var(--ff-h);
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -.02em;
+    margin-bottom: 24px;
+  }
+  #s6 .desc { font-size: 18px; color: var(--grey); line-height: 1.7; margin-bottom: 40px; }
+  #s6 .right {
+    background: var(--white);
+    height: 100%;
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    border-left: 1px solid rgba(0,0,0,.07);
+  }
+  .step-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .step-num {
+    font-family: var(--ff-h);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--red);
+    width: 32px;
+    height: 32px;
+    background: var(--red-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-item h4 { font-family: var(--ff-h); font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .step-item p { font-size: 14px; color: var(--grey); line-height: 1.6; }
+
+  /* ── SLIDE 7: MERCATO ── */
+  #s7 {
+    background: var(--white);
+    padding: 80px 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #s7 h2 { font-family: var(--ff-h); font-size: 44px; font-weight: 700; color: var(--navy); letter-spacing: -.02em; margin-bottom: 48px; }
+  .mercato-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .mercato-col {
+    border-radius: 12px;
+    padding: 32px;
+    border: 1px solid rgba(0,0,0,.08);
+  }
+  .mercato-col h3 {
+    font-family: var(--ff-h);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+  }
+  .mercato-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .mercato-col ul li {
+    font-size: 15px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .mercato-col ul li::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+
+  /* ── SLIDE 8: CONTATTI ── */
+  #s8 {
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 80px 120px;
+  }
+  #s8::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,16,46,.12) 0%, transparent 70%);
+  }
+  #s8 .logo { height: 44px; margin-bottom: 48px; position: relative; z-index: 1; }
+  #s8 h2 {
+    font-family: var(--ff-h);
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -.025em;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  #s8 h2 em { font-style: normal; color: var(--red); }
+  #s8 .cta-sub { font-size: 20px; color: rgba(255,255,255,.4); margin-bottom: 60px; position: relative; z-index: 1; }
+  #s8 .contacts {
+    display: flex;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #s8 .contact-chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    background: rgba(255,255,255,.06);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.08);
+  }
+  #s8 .contact-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+  #s8 .contact-chip span { font-family: var(--ff-h); font-size: 15px; color: rgba(255,255,255,.7); }
+  #s8 .iso-note { margin-top: 48px; font-family: var(--ff-h); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.2); position: relative; z-index: 1; }
+</style>
+</head>
+<body>
+<deck-stage>
+
+  <!-- 01 COVER -->
+  <section id="s1" data-screen-label="01 Cover">
+    <img class="logo" src="blc_white_red.png" alt="BLC"
+      onerror="this.outerHTML='<div style=\'font-family:Space Grotesk,sans-serif;font-size:40px;font-weight:700;color:white;margin-bottom:60px\'>B<span style=\'color:#C8102E\'>L</span>C</div>'" style="width: 200px; height: 100px">
+    <span class="eyebrow light">Presentazione Aziendale · 2025</span>
+    <h1>Business<br>Learning<br><em>Centre.</em></h1>
+    <p class="sub">Formazione professionale certificata ISO 21001:2019 a Lugano, Ticino.</p>
+    <div class="meta">
+      <div class="meta-item"><label>Sede</label><span>Lugano, Ticino CH</span></div>
+      <div class="meta-item"><label>Fondazione</label><span>2007</span></div>
+      <div class="meta-item"><label>Certificazione</label><span>ISO 21001:2019</span></div>
+      <div class="meta-item"><label>Sito</label><span>blc-sa.ch</span></div>
+    </div>
+  </section>
+
+  <!-- 02 DIVIDER: CHI SIAMO -->
+  <section class="slide-divider" data-screen-label="02 Chi Siamo Intro">
+    <div class="num">01</div>
+    <div>
+      <h2>Chi<br>siamo.</h2>
+      <p class="sec-sub">17 anni di formazione professionale in Ticino.</p>
+    </div>
+  </section>
+
+  <!-- 03 CHI SIAMO -->
+  <section id="s3" data-screen-label="03 Chi Siamo">
+    <div class="left">
+      <span class="eyebrow">Chi siamo</span>
+      <h2>Radici ticinesi.<br>Standard svizzeri.</h2>
+      <p class="desc">BLC è un centro di formazione professionale e orientamento professionale fondato nel 2007 a Lugano. Serviamo aziende private, enti pubblici e professionisti individuali con percorsi certificati e docenti attivi nel settore.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <div style="background:var(--red-light);color:var(--red);font-family:var(--ff-h);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;">ISO 21001:2019</div>
+        <div style="background:var(--grey-light);color:var(--steel);font-family:var(--ff-h);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;">B2B &amp; B2C</div>
+        <div style="background:var(--grey-light);color:var(--steel);font-family:var(--ff-h);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;">Dal 2007</div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="stat-pill">
+        <div class="num">17<span class="pill-em">+</span></div>
+        <div class="lbl">Anni di esperienza nel mercato ticinese</div>
+      </div>
+      <div class="stat-pill">
+        <div class="num"><span class="pill-em">ISO</span></div>
+        <div class="lbl">Certificazione internazionale per enti educativi</div>
+      </div>
+      <div class="stat-pill">
+        <div class="num">5<span class="pill-em">★</span></div>
+        <div class="lbl">Anni minimi esperienza certificata per ogni docente</div>
+      </div>
+      <div class="stat-pill">
+        <div class="num">360<span class="pill-em">°</span></div>
+        <div class="lbl">Formazione + orientamento + consulenza</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 DIVIDER: OFFERTA -->
+  <section class="slide-divider" data-screen-label="04 Offerta Intro">
+    <div class="num">02</div>
+    <div>
+      <h2>La nostra<br>offerta.</h2>
+      <p class="sec-sub">Corsi per il mercato del lavoro di oggi.</p>
+    </div>
+  </section>
+
+  <!-- 05 CORSI -->
+  <section id="s4" data-screen-label="05 Corsi">
+    <span class="eyebrow">Offerta formativa</span>
+    <h2>Competenze che contano — i nostri corsi.</h2>
+    <div class="corsi-grid">
+      <div class="corso-tile">
+        <div class="corso-top">
+          <div class="corso-ico">🤖</div>
+          <div class="corso-cat">Informatica &amp; AI</div>
+          <div class="corso-title">AI per Professionisti</div>
+        </div>
+        <div class="corso-body"><p>ChatGPT, Copilot, automazione workflow. Dalla teoria alla pratica in 2 giorni.</p></div>
+      </div>
+      <div class="corso-tile">
+        <div class="corso-top alt">
+          <div class="corso-ico">🌍</div>
+          <div class="corso-cat">Lingue</div>
+          <div class="corso-title">DE · EN · FR · ES · IT</div>
+        </div>
+        <div class="corso-body"><p>Generale e business. Da A1 a C2. Docenti madrelingua certificati per il mercato CH.</p></div>
+      </div>
+      <div class="corso-tile">
+        <div class="corso-top">
+          <div class="corso-ico">🛡️</div>
+          <div class="corso-cat">Safety &amp; Security</div>
+          <div class="corso-title">Micro-crisi &amp; De-escalation</div>
+        </div>
+        <div class="corso-body"><p>Gestione dell'aggressività, auto-protezione e sicurezza in ambienti professionali.</p></div>
+      </div>
+      <div class="corso-tile">
+        <div class="corso-top alt">
+          <div class="corso-ico">📊</div>
+          <div class="corso-cat">Finanza</div>
+          <div class="corso-title">Contabilità Generale</div>
+        </div>
+        <div class="corso-body"><p>Partita doppia, piano dei conti, bilancio. Standard svizzero per PMI e fiduciarie.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 PERCHÉ BLC -->
+  <section class="slide-divider" style="background:var(--navy-mid);" data-screen-label="06 Perché BLC Intro">
+    <div class="num" style="color:rgba(255,255,255,.06);">03</div>
+    <div>
+      <h2>Perché<br>BLC.</h2>
+      <p class="sec-sub">I fattori che ci differenziano dai competitor.</p>
+    </div>
+  </section>
+
+  <!-- 07 USP -->
+  <section id="s5" data-screen-label="07 USP">
+    <span class="eyebrow light">Differenziazione competitiva</span>
+    <h2>Non siamo una piattaforma.<br>Siamo <em>professionisti.</em></h2>
+    <div class="usp-grid">
+      <div class="usp-card">
+        <div class="n">01</div>
+        <h4>Docenti attivi nel settore</h4>
+        <p>Minimo 5 anni esperienza certificata nell'educazione degli adulti. Professionisti in attività, non solo teorici.</p>
+      </div>
+      <div class="usp-card">
+        <div class="n">02</div>
+        <h4>Classi piccole per scelta</h4>
+        <p>Posti limitati per garantire attenzione individuale e risultati misurabili su ogni partecipante.</p>
+      </div>
+      <div class="usp-card">
+        <div class="n">03</div>
+        <h4>ISO 21001:2019</h4>
+        <p>L'unica certificazione internazionale per organizzazioni educative. Qualità verificata da terzi, ogni anno.</p>
+      </div>
+      <div class="usp-card">
+        <div class="n">04</div>
+        <h4>Risultati applicabili da subito</h4>
+        <p>Ogni corso è progettato con approccio learning by doing. Si usa in ufficio dal primo giorno dopo l'aula.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 METODOLOGIA -->
+  <section id="s6" data-screen-label="08 Metodologia">
+    <div class="left">
+      <span class="eyebrow">Metodologia</span>
+      <h2>Come formiamo.</h2>
+      <p class="desc">Il nostro approccio didattico è pratico, progressivo e misurato sui risultati reali — non sulle ore in aula.</p>
+      <div style="font-family:var(--ff-h);font-size:15px;font-weight:600;color:var(--navy);letter-spacing:-.01em;">60% del tempo = pratica guidata su casi reali.</div>
+    </div>
+    <div class="right">
+      <div class="step-item">
+        <div class="step-num">01</div>
+        <div>
+          <h4>Analisi dei bisogni</h4>
+          <p>Ascolto delle esigenze specifiche dell'azienda o del professionista prima di progettare qualsiasi percorso.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">02</div>
+        <div>
+          <h4>Quiz di attivazione</h4>
+          <p>Rapid quiz iniziale per calibrare il livello reale del gruppo e personalizzare il ritmo del corso.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">03</div>
+        <div>
+          <h4>Pratica guidata progressiva</h4>
+          <p>60% del tempo dedicato a esercizi concreti su casi propri del partecipante. Si impara facendo.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">04</div>
+        <div>
+          <h4>Progetto finale &amp; verifica</h4>
+          <p>Ogni modulo contribuisce a un progetto integrato che dimostra le competenze acquisite.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 MERCATO -->
+  <section id="s7" data-screen-label="09 Mercato">
+    <span class="eyebrow">Clienti &amp; Mercato</span>
+    <h2>Formiamo il Ticino che lavora.</h2>
+    <div class="mercato-grid">
+      <div class="mercato-col">
+        <h3>Settore privato</h3>
+        <ul>
+          <li>Aziende farmaceutiche</li>
+          <li>Banche e fiduciarie</li>
+          <li>Studi legali e notarili</li>
+          <li>Aziende industriali e manifatturiere</li>
+          <li>Agenzie e aziende di servizi</li>
+        </ul>
+      </div>
+      <div class="mercato-col">
+        <h3>Settore pubblico</h3>
+        <ul>
+          <li>Uffici cantonali e federali</li>
+          <li>Ospedali e strutture sanitarie</li>
+          <li>Aziende di trasporto</li>
+          <li>Enti e istituzioni pubbliche</li>
+          <li>Programmi di reintegrazione lavorativa</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 CHIUSURA -->
+  <section id="s8" data-screen-label="10 Contatti">
+    <img class="logo" src="blc_white_red.png" alt="BLC"
+      onerror="this.outerHTML='<div style=\'font-family:Space Grotesk,sans-serif;font-size:36px;font-weight:700;color:white;margin-bottom:48px;position:relative;z-index:1\'>B<span style=\'color:#C8102E\'>L</span>C</div>'">
+    <h2>Competenze<br>che <em>contano.</em></h2>
+    <p class="cta-sub">Contattaci per una proposta formativa su misura.</p>
+    <div class="contacts">
+      <div class="contact-chip"><div class="dot"></div><span>blc-sa.ch</span></div>
+      <div class="contact-chip"><div class="dot"></div><span>+41 91 000 00 00</span></div>
+      <div class="contact-chip"><div class="dot"></div><span>Via Zurigo 44, Lugano</span></div>
+    </div>
+    <div class="iso-note">ISO 21001:2019 Certified Educational Organization · Since 2007</div>
+  </section>
+
+</deck-stage>
+</body>
+</html>

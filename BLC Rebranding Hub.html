@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLC — Rebranding 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1F3A; --red: #C8102E;
+    --warm-white: #F5F3EE; --white: #FFFFFF;
+    --grey: #8A96A3; --grey-light: #E8EDF5;
+    --red-light: #FDEEF1; --steel: #2A5298;
+    --ff-h: 'Space Grotesk',sans-serif;
+    --ff-b: 'DM Sans',sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--ff-b); background: var(--warm-white); color: var(--navy); min-height: 100vh; }
+
+  /* HERO */
+  .hub-hero {
+    background: var(--navy);
+    padding: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hub-hero::before {
+    content: '';
+    position: absolute;
+    right: -80px; top: 50%;
+    transform: translateY(-50%);
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,16,46,.12) 0%, transparent 65%);
+  }
+  .hub-hero .eyebrow {
+    font-family: var(--ff-h);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 20px;
+  }
+  .hub-logo {
+    display: flex; align-items: center; gap: 20px; margin-bottom: 40px;
+  }
+  .hub-logo img { height: 44px; }
+  .hub-logo-fallback {
+    font-family: var(--ff-h); font-size: 32px; font-weight: 700; color: white;
+  }
+  .hub-logo-fallback span { color: var(--red); }
+  .hub-h1 {
+    font-family: var(--ff-h);
+    font-size: clamp(36px, 4vw, 64px);
+    font-weight: 700; color: white;
+    letter-spacing: -.025em; line-height: 1.05;
+    margin-bottom: 16px; max-width: 700px;
+  }
+  .hub-h1 em { font-style: normal; color: var(--red); }
+  .hub-sub { font-size: 18px; color: rgba(255,255,255,.45); max-width: 500px; line-height: 1.65; }
+
+  /* BRAND SYSTEM STRIP */
+  .brand-strip {
+    background: white;
+    padding: 24px 80px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    border-bottom: 1px solid rgba(0,0,0,.07);
+    flex-wrap: wrap;
+  }
+  .strip-label { font-family: var(--ff-h); font-size: 11px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--grey); white-space: nowrap; }
+  .color-dots { display: flex; gap: 10px; align-items: center; }
+  .cdot { width: 28px; height: 28px; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
+  .font-pills { display: flex; gap: 10px; }
+  .fpill { font-family: var(--ff-h); font-size: 12px; font-weight: 500; padding: 4px 12px; background: var(--grey-light); border-radius: 100px; color: var(--navy); }
+  .tagline-strip { font-family: var(--ff-h); font-size: 14px; font-weight: 700; color: var(--navy); letter-spacing: -.01em; margin-left: auto; }
+  .tagline-strip em { font-style: normal; color: var(--red); }
+
+  /* GRID */
+  .hub-grid {
+    padding: 60px 80px 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .hub-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,.07);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s, box-shadow .2s;
+    cursor: pointer;
+  }
+  .hub-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 48px rgba(11,31,58,.12);
+  }
+
+  .card-thumb {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Individual thumb colors */
+  .thumb-brandbook { background: var(--navy); }
+  .thumb-homepage { background: #0B1F3A; }
+  .thumb-pres { background: var(--red); }
+  .thumb-card { background: #1a1a2e; }
+  .thumb-social { background: var(--navy); }
+
+  .card-thumb-inner {
+    position: relative; z-index: 1;
+    text-align: center;
+  }
+  .card-body {
+    padding: 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .card-tag {
+    font-family: var(--ff-h);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: var(--red);
+  }
+  .card-title {
+    font-family: var(--ff-h);
+    font-size: 20px; font-weight: 700;
+    color: var(--navy); letter-spacing: -.01em;
+    line-height: 1.2;
+  }
+  .card-desc { font-size: 14px; color: var(--grey); line-height: 1.6; margin-top: 4px; }
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    font-family: var(--ff-h);
+    font-size: 13px; font-weight: 600;
+    color: var(--red);
+    transition: gap .2s;
+  }
+  .hub-card:hover .card-cta { gap: 10px; }
+
+  /* Thumb content mini mockups */
+  .mini-palette { display: flex; gap: 6px; }
+  .mini-swatch { width: 36px; height: 36px; border-radius: 8px; }
+  .mini-text { font-family: var(--ff-h); font-size: 28px; font-weight: 700; color: white; letter-spacing: -.02em; }
+  .mini-text em { font-style: normal; color: var(--red); }
+
+  .mini-page {
+    width: 180px; background: white;
+    border-radius: 8px; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,.3);
+  }
+  .mini-page-header { background: var(--navy); padding: 10px 12px; }
+  .mini-page-h { font-family: var(--ff-h); font-size: 9px; font-weight: 700; color: white; }
+  .mini-page-body { padding: 10px 12px; }
+  .mini-page-line { height: 5px; border-radius: 3px; background: #e0e0e0; margin-bottom: 5px; }
+  .mini-page-line.short { width: 60%; }
+  .mini-page-line.red { background: var(--red); width: 80%; }
+
+  .mini-slide {
+    width: 200px; height: 112px;
+    background: var(--navy-mid, #1E3A5F);
+    border-radius: 6px; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,.35);
+    padding: 14px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .mini-slide .s-tag { font-family: var(--ff-h); font-size: 7px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red); }
+  .mini-slide .s-h { font-family: var(--ff-h); font-size: 14px; font-weight: 700; color: white; line-height: 1.1; }
+  .mini-slide .s-dots { display: flex; gap: 4px; }
+  .mini-slide .s-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.25); }
+  .mini-slide .s-dot.active { background: var(--red); }
+
+  .mini-card-wrap { display: flex; gap: 8px; }
+  .mini-biz {
+    width: 110px; height: 66px;
+    border-radius: 6px; overflow: hidden; position: relative;
+    box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  }
+  .mini-biz.dark { background: var(--navy); }
+  .mini-biz.light { background: var(--warm-white); border: 1px solid rgba(0,0,0,.1); }
+  .mini-biz .stripe { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--red); }
+  .mini-biz-inner { padding: 10px 10px 10px 14px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+  .mini-biz-name { font-family: var(--ff-h); font-size: 7px; font-weight: 700; }
+  .mini-biz.dark .mini-biz-name { color: white; }
+  .mini-biz.light .mini-biz-name { color: var(--navy); }
+  .mini-biz-role { font-family: var(--ff-h); font-size: 5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+  .mini-biz.dark .mini-biz-role { color: rgba(255,255,255,.35); }
+  .mini-biz.light .mini-biz-role { color: var(--grey); }
+
+  .mini-social { display: flex; gap: 6px; }
+  .mini-post { width: 64px; height: 64px; border-radius: 6px; overflow: hidden; position: relative; }
+  .mini-post.p1 { background: var(--navy); }
+  .mini-post.p2 { background: var(--red); }
+  .mini-post.p3 { background: var(--warm-white); border: 1px solid rgba(0,0,0,.1); }
+  .mini-post-inner { padding: 6px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+  .mini-post-chip { font-family: var(--ff-h); font-size: 5px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 1px 4px; border-radius: 2px; display: inline-block; }
+  .p1 .mini-post-chip { background: var(--red); color: white; }
+  .p2 .mini-post-chip { background: rgba(255,255,255,.2); color: white; }
+  .p3 .mini-post-chip { background: var(--red-light); color: var(--red); }
+  .mini-post-text { font-family: var(--ff-h); font-size: 7px; font-weight: 700; line-height: 1.2; }
+  .p1 .mini-post-text { color: white; }
+  .p2 .mini-post-text { color: white; }
+  .p3 .mini-post-text { color: var(--navy); }
+
+  /* Footer */
+  .hub-footer {
+    background: var(--navy);
+    padding: 32px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hub-footer p { font-family: var(--ff-h); font-size: 13px; color: rgba(255,255,255,.3); }
+  .hub-footer .logo { font-family: var(--ff-h); font-size: 18px; font-weight: 700; color: white; }
+  .hub-footer .logo span { color: var(--red); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hub-hero">
+  <div class="eyebrow">Progetto Rebranding · 2025</div>
+  <div class="hub-logo">
+    <img src="blc_white_red.png" alt="BLC" onerror="this.outerHTML='<div class=hub-logo-fallback>B<span>L</span>C</div>'">
+  </div>
+  <h1 class="hub-h1">Brand Identity<br><em>System 2025</em></h1>
+  <p class="hub-sub">Tutti i deliverable del rebranding BLC — brand book, homepage, presentazione, business card e social kit.</p>
+</div>
+
+<!-- BRAND STRIP -->
+<div class="brand-strip">
+  <div class="strip-label">Sistema brand</div>
+  <div class="color-dots">
+    <div class="cdot" style="background:#0B1F3A" title="BLC Navy"></div>
+    <div class="cdot" style="background:#C8102E" title="BLC Red"></div>
+    <div class="cdot" style="background:#F5F3EE" title="Warm White" ></div>
+    <div class="cdot" style="background:#2A5298" title="BLC Steel"></div>
+    <div class="cdot" style="background:#8A96A3" title="Slate Grey"></div>
+  </div>
+  <div class="font-pills">
+    <div class="fpill">Space Grotesk</div>
+    <div class="fpill">DM Sans</div>
+  </div>
+  <div class="tagline-strip">Competenze <em>che contano.</em></div>
+</div>
+
+<!-- DELIVERABLES GRID -->
+<div class="hub-grid">
+
+  <!-- BRAND BOOK -->
+  <a href="BLC Brand Book.html" class="hub-card" target="_blank">
+    <div class="card-thumb thumb-brandbook">
+      <div class="card-thumb-inner">
+        <div class="mini-text">B<em>L</em>C</div>
+        <div style="display:flex;gap:8px;margin-top:12px;justify-content:center;">
+          <div class="mini-swatch" style="background:#0B1F3A"></div>
+          <div class="mini-swatch" style="background:#C8102E"></div>
+          <div class="mini-swatch" style="background:#F5F3EE"></div>
+          <div class="mini-swatch" style="background:#2A5298"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-tag">01 — Brand Guidelines</div>
+      <div class="card-title">Brand Book</div>
+      <p class="card-desc">Logo, palette colori, tipografia, componenti, tono di voce. Il manuale completo del sistema visivo BLC.</p>
+      <div class="card-cta">Apri Brand Book →</div>
+    </div>
+  </a>
+
+  <!-- HOMEPAGE -->
+  <a href="BLC Homepage.html" class="hub-card" target="_blank">
+    <div class="card-thumb thumb-homepage">
+      <div class="card-thumb-inner">
+        <div class="mini-page">
+          <div class="mini-page-header">
+            <div class="mini-page-h">BLC — Competenze che contano.</div>
+          </div>
+          <div class="mini-page-body">
+            <div class="mini-page-line red"></div>
+            <div class="mini-page-line"></div>
+            <div class="mini-page-line short"></div>
+            <div class="mini-page-line"></div>
+            <div class="mini-page-line short"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-tag">02 — Web Design</div>
+      <div class="card-title">Homepage Mockup</div>
+      <p class="card-desc">Redesign completo della homepage con hero, corsi in evidenza, differenziatori, testimoniali e footer.</p>
+      <div class="card-cta">Apri Homepage →</div>
+    </div>
+  </a>
+
+  <!-- PRESENTAZIONE -->
+  <a href="BLC Presentazione.html" class="hub-card" target="_blank">
+    <div class="card-thumb thumb-pres">
+      <div class="card-thumb-inner">
+        <div class="mini-slide">
+          <div class="s-tag">Presentazione Aziendale · 2025</div>
+          <div class="s-h">Business<br>Learning Centre.</div>
+          <div class="s-dots">
+            <div class="s-dot active"></div>
+            <div class="s-dot"></div>
+            <div class="s-dot"></div>
+            <div class="s-dot"></div>
+            <div class="s-dot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-tag">03 — Deck</div>
+      <div class="card-title">Presentazione Aziendale</div>
+      <p class="card-desc">Template deck 10 slide: cover, chi siamo, offerta corsi, USP, metodologia, mercato, contatti.</p>
+      <div class="card-cta">Apri Presentazione →</div>
+    </div>
+  </a>
+
+  <!-- BUSINESS CARD -->
+  <a href="BLC Business Card.html" class="hub-card" target="_blank">
+    <div class="card-thumb thumb-card">
+      <div class="card-thumb-inner">
+        <div class="mini-card-wrap">
+          <div class="mini-biz dark">
+            <div class="stripe"></div>
+            <div class="mini-biz-inner">
+              <div></div>
+              <div>
+                <div class="mini-biz-name">Marco Bernasconi</div>
+                <div class="mini-biz-role">Resp. Formazione</div>
+              </div>
+            </div>
+          </div>
+          <div class="mini-biz light">
+            <div class="stripe"></div>
+            <div class="mini-biz-inner">
+              <div style="font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;color:#0B1F3A;">B<span style="color:#C8102E">L</span>C</div>
+              <div>
+                <div class="mini-biz-name" style="color:#0B1F3A;">Marco Bernasconi</div>
+                <div class="mini-biz-role" style="color:#8A96A3;">Resp. Formazione</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-tag">04 — Print</div>
+      <div class="card-title">Business Card</div>
+      <p class="card-desc">Due varianti (navy e light/red), fronte e retro. Specifiche di stampa 85×55mm, 400g soft-touch.</p>
+      <div class="card-cta">Apri Business Card →</div>
+    </div>
+  </a>
+
+  <!-- SOCIAL KIT -->
+  <a href="BLC Social Kit.html" class="hub-card" target="_blank">
+    <div class="card-thumb" style="background:var(--navy);">
+      <div class="card-thumb-inner">
+        <div class="mini-social">
+          <div class="mini-post p1">
+            <div class="mini-post-inner">
+              <div class="mini-post-chip">Nuovo</div>
+              <div class="mini-post-text">AI per Prof.</div>
+            </div>
+          </div>
+          <div class="mini-post p2">
+            <div class="mini-post-inner">
+              <div class="mini-post-chip">Stats</div>
+              <div class="mini-post-text">17+ anni</div>
+            </div>
+          </div>
+          <div class="mini-post p3">
+            <div class="mini-post-inner">
+              <div class="mini-post-chip">Tip</div>
+              <div class="mini-post-text">3 AI tips</div>
+            </div>
+          </div>
+        </div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:12px;">LinkedIn · Instagram · Stories</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-tag">05 — Social Media</div>
+      <div class="card-title">Social Media Kit</div>
+      <p class="card-desc">LinkedIn cover, 4 template post quadrato 1:1, 3 template story 9:16. Pronti per Canva o export diretto.</p>
+      <div class="card-cta">Apri Social Kit →</div>
+    </div>
+  </a>
+
+  <!-- PROSSIMAMENTE / NOTE -->
+  <div class="hub-card" style="opacity:.55; cursor:default; pointer-events:none;">
+    <div class="card-thumb" style="background:#E8EDF5; display:flex; align-items:center; justify-content:center;">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;color:rgba(11,31,58,.25);letter-spacing:-.02em;">+</div>
+    </div>
+    <div class="card-body">
+      <div class="card-tag">In sviluppo</div>
+      <div class="card-title">Carta intestata & Templates</div>
+      <p class="card-desc">Lettera ufficiale, offerta formativa, certificato di partecipazione — disponibili nella prossima iterazione.</p>
+      <div class="card-cta" style="color:var(--grey);">Prossimamente</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="hub-footer">
+  <div class="logo">B<span>L</span>C Business Learning Centre SA</div>
+  <p>Rebranding 2025 · Lugano, Ticino · blc-sa.ch</p>
+</div>
+
+</body>
+</html>

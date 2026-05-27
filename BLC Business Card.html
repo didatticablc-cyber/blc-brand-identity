@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLC — Business Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1F3A; --navy-mid: #1E3A5F;
+    --red: #C8102E; --warm-white: #F5F3EE;
+    --white: #FFFFFF; --grey: #8A96A3;
+    --ff-h: 'Space Grotesk',sans-serif;
+    --ff-b: 'DM Sans',sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #DDDAD4;
+    font-family: var(--ff-b);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    padding: 80px 40px;
+  }
+  .page-title {
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,.4);
+    text-align: center;
+  }
+  .cards-row {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .card-set {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+  .card-label {
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,.4);
+  }
+
+  /* BUSINESS CARD: 85mm x 55mm at 3.2x = 272 x 176px */
+  .biz-card {
+    width: 340px;
+    height: 204px;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    flex-shrink: 0;
+  }
+
+  /* FRONT - DARK */
+  .card-front-dark {
+    background: var(--navy);
+  }
+  .card-front-dark .accent-bar {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--red);
+  }
+  .card-front-dark .card-content {
+    padding: 28px 28px 28px 36px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-front-dark .logo-area img { height: 28px; }
+  .card-front-dark .logo-fallback {
+    font-family: var(--ff-h);
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+  }
+  .card-front-dark .logo-fallback span { color: var(--red); }
+  .card-front-dark .person-area {}
+  .card-front-dark .person-name {
+    font-family: var(--ff-h);
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -.01em;
+    margin-bottom: 4px;
+  }
+  .card-front-dark .person-role {
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.45);
+  }
+  .card-front-dark .deco-circle {
+    position: absolute;
+    right: -40px; bottom: -40px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(200,16,46,.12);
+  }
+  .card-front-dark .deco-circle-2 {
+    position: absolute;
+    right: 30px; top: -30px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.03);
+  }
+
+  /* BACK - DARK */
+  .card-back-dark {
+    background: var(--navy-mid);
+  }
+  .card-back-dark .card-content {
+    padding: 28px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-back-dark .contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .card-back-dark .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .contact-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+  .card-back-dark .contact-text {
+    font-family: var(--ff-h);
+    font-size: 12px;
+    color: rgba(255,255,255,.6);
+    letter-spacing: .01em;
+  }
+  .card-back-dark .tagline {
+    font-family: var(--ff-h);
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255,255,255,.9);
+    letter-spacing: -.01em;
+  }
+  .card-back-dark .tagline span { color: var(--red); }
+  .card-back-dark .iso-tag {
+    font-family: var(--ff-h);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.25);
+  }
+
+  /* FRONT - LIGHT */
+  .card-front-light {
+    background: var(--warm-white);
+    border: 1px solid rgba(0,0,0,.1);
+  }
+  .card-front-light .accent-bar {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--red);
+  }
+  .card-front-light .card-content {
+    padding: 28px 28px 28px 36px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-front-light .person-name {
+    font-family: var(--ff-h);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -.01em;
+    margin-bottom: 4px;
+  }
+  .card-front-light .person-role {
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+  .card-front-light .logo-fallback {
+    font-family: var(--ff-h);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .card-front-light .logo-fallback span { color: var(--red); }
+  .card-front-light .deco {
+    position: absolute;
+    right: 28px; top: 50%;
+    transform: translateY(-50%);
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,16,46,.2);
+  }
+  .card-front-light .deco::after {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,16,46,.15);
+  }
+
+  /* BACK - LIGHT */
+  .card-back-light {
+    background: var(--red);
+  }
+  .card-back-light .card-content {
+    padding: 28px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-back-light .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-back-light .contact-dot { background: rgba(255,255,255,.5); }
+  .card-back-light .contact-text {
+    font-family: var(--ff-h);
+    font-size: 12px;
+    color: rgba(255,255,255,.8);
+  }
+  .card-back-light .contact-grid { display: flex; flex-direction: column; gap: 10px; }
+  .card-back-light .tagline {
+    font-family: var(--ff-h);
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255,255,255,.95);
+  }
+  .card-back-light .iso-tag {
+    font-family: var(--ff-h);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+  }
+  .card-back-light .deco-bg {
+    position: absolute;
+    right: -30px; bottom: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.08);
+  }
+
+  /* NOTA SPECIFICA */
+  .print-note {
+    background: white;
+    border-radius: 8px;
+    padding: 20px 28px;
+    font-family: var(--ff-h);
+    font-size: 12px;
+    color: var(--grey);
+    max-width: 560px;
+    text-align: center;
+    line-height: 1.6;
+  }
+  .print-note strong { color: var(--navy); }
+</style>
+</head>
+<body>
+
+<div class="page-title">BLC Business Card — Versione 2025 · 85mm × 55mm</div>
+
+<div class="cards-row">
+  <!-- VERSIONE SCURA -->
+  <div class="card-set">
+    <div class="card-label">Variante Navy — Fronte</div>
+    <div class="biz-card card-front-dark">
+      <div class="accent-bar"></div>
+      <div class="deco-circle"></div>
+      <div class="deco-circle-2"></div>
+      <div class="card-content">
+        <div class="logo-area">
+          <img src="blc_white_red.png" alt="BLC" onerror="this.outerHTML='<div class=logo-fallback>B<span>L</span>C</div>'">
+        </div>
+        <div class="person-area">
+          <div class="person-name">Marco Bernasconi</div>
+          <div class="person-role">Responsabile Formazione</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-label">Variante Navy — Retro</div>
+    <div class="biz-card card-back-dark">
+      <div class="card-content">
+        <div>
+          <div class="tagline">Competenze <span>che contano.</span></div>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-item"><div class="contact-dot"></div><div class="contact-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8be6a5e9eef9e5eaf8e8e4e5e2cbe9e7e8a6f8eaa5e8e3">[email&#160;protected]</a></div></div>
+          <div class="contact-item"><div class="contact-dot"></div><div class="contact-text">+41 91 000 00 00</div></div>
+          <div class="contact-item"><div class="contact-dot"></div><div class="contact-text">Via Zurigo 44 · 6900 Lugano</div></div>
+          <div class="contact-item"><div class="contact-dot"></div><div class="contact-text">blc-sa.ch</div></div>
+        </div>
+        <div class="iso-tag">ISO 21001:2019 Certified · Since 2007</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERSIONE CHIARA -->
+  <div class="card-set">
+    <div class="card-label">Variante Light — Fronte</div>
+    <div class="biz-card card-front-light">
+      <div class="accent-bar"></div>
+      <div class="deco"></div>
+      <div class="card-content">
+        <div class="logo-fallback">B<span>L</span>C</div>
+        <div>
+          <div class="person-name">Marco Bernasconi</div>
+          <div class="person-role">Responsabile Formazione</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-label">Variante Red — Retro</div>
+    <div class="biz-card card-back-light" style="position:relative;overflow:hidden;">
+      <div class="deco-bg"></div>
+      <div class="card-content">
+        <div>
+          <div class="tagline">Competenze che contano.</div>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-item"><div class="contact-dot" style="background:rgba(255,255,255,.5)"></div><div class="contact-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f19cdf9394839f9082929e9f98b1939d92dc8290df9299">[email&#160;protected]</a></div></div>
+          <div class="contact-item"><div class="contact-dot" style="background:rgba(255,255,255,.5)"></div><div class="contact-text">+41 91 000 00 00</div></div>
+          <div class="contact-item"><div class="contact-dot" style="background:rgba(255,255,255,.5)"></div><div class="contact-text">blc-sa.ch</div></div>
+        </div>
+        <div class="iso-tag">ISO 21001:2019 · Lugano, Ticino</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="print-note">
+  <strong>Specifiche di stampa:</strong> 85 × 55 mm · 300 dpi · Carta: 400g soft-touch opaco · Colori: CMYK (Navy: C95 M75 Y40 K35 · Red: C10 M100 Y90 K5) · Bordi: 3mm bleed
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

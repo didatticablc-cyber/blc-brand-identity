@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLC — Brand Book 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #0B1F3A;
+    --navy-mid:   #1E3A5F;
+    --navy-light: #2E5490;
+    --red:        #C8102E;
+    --red-light:  #FDEEF1;
+    --warm-white: #F5F3EE;
+    --white:      #FFFFFF;
+    --text:       #1A1A2E;
+    --grey:       #8A96A3;
+    --grey-light: #E8EDF5;
+    --steel:      #2A5298;
+
+    --ff-head: 'Space Grotesk', sans-serif;
+    --ff-body: 'DM Sans', sans-serif;
+
+    --r: 4px;
+    --r-lg: 12px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--ff-body);
+    background: var(--warm-white);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--navy);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    height: 56px;
+    gap: 32px;
+  }
+  nav .brand {
+    font-family: var(--ff-head);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--white);
+    letter-spacing: .06em;
+    margin-right: auto;
+  }
+  nav .brand span { color: var(--red); }
+  nav a {
+    font-family: var(--ff-head);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.6);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  nav a:hover { color: var(--white); }
+
+  /* ── LAYOUT ── */
+  .page { padding-top: 56px; }
+
+  section {
+    padding: 100px 80px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  section.full-bleed {
+    max-width: none;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  /* ── COVER ── */
+  #cover {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+    max-width: none;
+    position: relative;
+    overflow: hidden;
+  }
+  #cover::before {
+    content: '';
+    position: absolute;
+    right: -100px; top: -100px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,16,46,.15) 0%, transparent 70%);
+  }
+  #cover::after {
+    content: '';
+    position: absolute;
+    left: 30%; bottom: -80px;
+    width: 2px; height: 60%;
+    background: rgba(200,16,46,.3);
+  }
+  .cover-eyebrow {
+    font-family: var(--ff-head);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 32px;
+  }
+  .cover-logo {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .cover-logo img { height: 72px; }
+  .cover-h1 {
+    font-family: var(--ff-head);
+    font-size: clamp(48px, 6vw, 96px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -.02em;
+    max-width: 900px;
+    margin-bottom: 24px;
+  }
+  .cover-h1 em {
+    font-style: normal;
+    color: var(--red);
+  }
+  .cover-sub {
+    font-family: var(--ff-body);
+    font-size: 20px;
+    color: rgba(255,255,255,.55);
+    max-width: 480px;
+    margin-bottom: 60px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+  }
+  .cover-meta-item label {
+    font-family: var(--ff-head);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.35);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item span {
+    font-family: var(--ff-head);
+    font-size: 14px;
+    color: rgba(255,255,255,.7);
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-family: var(--ff-head);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: var(--ff-head);
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    margin-bottom: 20px;
+  }
+  .section-desc {
+    font-size: 17px;
+    color: var(--grey);
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 64px;
+  }
+  .divider {
+    height: 1px;
+    background: rgba(0,0,0,.08);
+    margin: 0 80px;
+  }
+
+  /* ── LOGO SECTION ── */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .logo-card {
+    border-radius: var(--r-lg);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .logo-card.light { background: var(--white); border: 1px solid rgba(0,0,0,.08); }
+  .logo-card.dark  { background: var(--navy); }
+  .logo-card.red   { background: var(--red); }
+  .logo-card img   { height: 48px; object-fit: contain; object-position: left; }
+  .logo-card-label {
+    font-family: var(--ff-head);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .logo-card.light .logo-card-label { color: var(--grey); }
+  .logo-card.dark  .logo-card-label { color: rgba(255,255,255,.45); }
+  .logo-card.red   .logo-card-label { color: rgba(255,255,255,.6); }
+
+  .clear-space-demo {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: var(--r-lg);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 24px;
+  }
+  .clear-space-inner {
+    position: relative;
+    border: 2px dashed var(--red);
+    padding: 32px;
+    border-radius: 4px;
+  }
+  .clear-space-inner img { height: 40px; display: block; }
+  .clear-label {
+    font-size: 11px;
+    color: var(--red);
+    font-family: var(--ff-head);
+    letter-spacing: .1em;
+    position: absolute;
+    top: -18px; left: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  /* ── COLORS ── */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .color-chip {
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  }
+  .color-chip-swatch {
+    height: 120px;
+  }
+  .color-chip-info {
+    padding: 16px;
+    background: var(--white);
+  }
+  .color-chip-name {
+    font-family: var(--ff-head);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .color-chip-hex {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--grey);
+  }
+  .color-chip-role {
+    font-size: 11px;
+    color: var(--grey);
+    margin-top: 4px;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .type-scale {
+    background: var(--white);
+    border-radius: var(--r-lg);
+    padding: 48px;
+    margin-bottom: 32px;
+    border: 1px solid rgba(0,0,0,.06);
+  }
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 32px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--grey-light);
+  }
+  .type-row:last-child { border-bottom: none; }
+  .type-meta {
+    min-width: 100px;
+    font-family: var(--ff-head);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--grey);
+    flex-shrink: 0;
+  }
+  .type-specimen { flex: 1; }
+
+  .font-families {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .font-card {
+    background: var(--white);
+    border-radius: var(--r-lg);
+    padding: 40px;
+    border: 1px solid rgba(0,0,0,.06);
+  }
+  .font-card-role {
+    font-family: var(--ff-head);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+  .font-card-name {
+    font-family: var(--ff-head);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .font-card-desc {
+    font-size: 13px;
+    color: var(--grey);
+    margin-bottom: 24px;
+  }
+  .font-card-specimen-head {
+    font-family: var(--ff-head);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+  .font-card-specimen-body {
+    font-family: var(--ff-body);
+    font-size: 18px;
+    color: var(--text);
+    line-height: 1.65;
+  }
+  .font-weights {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  .weight-item {
+    font-size: 13px;
+    color: var(--grey);
+  }
+
+  /* ── COMPONENTS ── */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .comp-card {
+    background: var(--white);
+    border-radius: var(--r-lg);
+    padding: 40px;
+    border: 1px solid rgba(0,0,0,.06);
+  }
+  .comp-card h4 {
+    font-family: var(--ff-head);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 28px;
+  }
+
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn {
+    font-family: var(--ff-head);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    padding: 12px 24px;
+    border-radius: var(--r);
+    cursor: pointer;
+    transition: all .2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary { background: var(--red); color: var(--white); border: none; }
+  .btn-secondary { background: var(--navy); color: var(--white); border: none; }
+  .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+  .btn-ghost { background: transparent; color: var(--grey); border: 1px solid rgba(0,0,0,.12); }
+  .btn-sm { font-size: 12px; padding: 8px 16px; }
+  .btn-lg { font-size: 15px; padding: 16px 32px; }
+
+  .badge {
+    font-family: var(--ff-head);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    display: inline-block;
+  }
+  .badge-red   { background: var(--red-light); color: var(--red); }
+  .badge-navy  { background: rgba(11,31,58,.1); color: var(--navy); }
+  .badge-steel { background: #E8EDF5; color: var(--steel); }
+
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+
+  .card-example {
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  .card-header-ex {
+    background: var(--navy);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .card-icon {
+    width: 40px; height: 40px;
+    background: rgba(200,16,46,.25);
+    border-radius: var(--r);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .card-header-title {
+    font-family: var(--ff-head);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+  }
+  .card-header-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,.5);
+  }
+  .card-body-ex {
+    padding: 24px;
+    background: var(--white);
+  }
+  .card-body-ex p {
+    font-size: 14px;
+    color: var(--grey);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  /* ── VOICE ── */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .voice-card {
+    background: var(--white);
+    border-radius: var(--r-lg);
+    padding: 28px;
+    border: 1px solid rgba(0,0,0,.06);
+  }
+  .voice-card h4 {
+    font-family: var(--ff-head);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .voice-card p { font-size: 13px; color: var(--grey); line-height: 1.6; }
+
+  .do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .do-dont-col {
+    background: var(--white);
+    border-radius: var(--r-lg);
+    padding: 32px;
+    border: 1px solid rgba(0,0,0,.06);
+  }
+  .do-dont-col h4 {
+    font-family: var(--ff-head);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid;
+  }
+  .do-dont-col.do h4 { color: #1a7a4a; border-color: #1a7a4a; }
+  .do-dont-col.dont h4 { color: var(--red); border-color: var(--red); }
+  .do-dont-col ul { list-style: none; }
+  .do-dont-col ul li {
+    font-size: 14px;
+    color: var(--text);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--grey-light);
+    display: flex;
+    gap: 10px;
+  }
+  .do-dont-col ul li::before { font-size: 14px; flex-shrink: 0; }
+  .do-dont-col.do ul li::before { content: '✓'; color: #1a7a4a; }
+  .do-dont-col.dont ul li::before { content: '✗'; color: var(--red); }
+
+  /* ── FOOTER ── */
+  .bb-footer {
+    background: var(--navy);
+    padding: 60px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .bb-footer-brand {
+    font-family: var(--ff-head);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--white);
+  }
+  .bb-footer-brand span { color: var(--red); }
+  .bb-footer-text {
+    font-size: 13px;
+    color: rgba(255,255,255,.35);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="brand">B<span>L</span>C <span style="color:rgba(255,255,255,.3);font-weight:300">|</span> Brand Guidelines</div>
+  <a href="#logo">Logo</a>
+  <a href="#colori">Colori</a>
+  <a href="#tipografia">Tipografia</a>
+  <a href="#componenti">Componenti</a>
+  <a href="#voce">Voce</a>
+</nav>
+
+<div class="page">
+
+<!-- COVER -->
+<section id="cover">
+  <div class="cover-eyebrow">Brand Identity Guidelines · Versione 2025</div>
+  <div class="cover-logo">
+    <img src="blc_white_red.png" alt="BLC Logo" onerror="this.style.display='none'">
+  </div>
+  <h1 class="cover-h1">Competenze<br>che <em>contano.</em></h1>
+  <p class="cover-sub">Il sistema visivo che definisce BLC Business Learning Centre SA — autorevole, moderno, svizzero.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <label>Azienda</label>
+      <span>BLC Business Learning Centre SA</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Sede</label>
+      <span>Lugano, Ticino, CH</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Fondazione</label>
+      <span>2007</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Certificazione</label>
+      <span>ISO 21001:2019</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 01 LOGO -->
+<section id="logo">
+  <div class="section-label">01 — Logo</div>
+  <h2 class="section-title">Il nostro segno distintivo</h2>
+  <p class="section-desc">Il logo BLC è il cuore dell'identità visiva. La L rossa all'interno del monogramma è il nostro elemento di differenziazione — non modificarla mai. Usare sempre i file originali forniti.</p>
+
+  <div class="logo-grid">
+    <div class="logo-card light">
+      <img src="BLC_HD.png" alt="Logo BLC primario">
+      <div class="logo-card-label">Versione principale</div>
+    </div>
+    <div class="logo-card dark">
+      <img src="blc_white_red.png" alt="Logo BLC su scuro">
+      <div class="logo-card-label">Su sfondo scuro</div>
+    </div>
+    <div class="logo-card red">
+      <img src="blc_white_red.png" alt="Logo BLC su rosso">
+      <div class="logo-card-label">Su sfondo rosso</div>
+    </div>
+  </div>
+
+  <div class="clear-space-demo">
+    <div class="clear-space-inner">
+      <span class="clear-label">Spazio minimo = altezza "x"</span>
+      <img src="BLC_HD.png" alt="Logo clear space">
+    </div>
+  </div>
+
+  <div class="comp-grid" style="margin-top:32px">
+    <div class="comp-card">
+      <h4>✓ Usi corretti</h4>
+      <ul style="list-style:none; font-size:14px; color:var(--text);">
+        <li style="padding:8px 0; border-bottom:1px solid var(--grey-light);">Su sfondo bianco o warm-white</li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--grey-light);">Su sfondo navy pieno</li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--grey-light);">Proporzionato e leggibile</li>
+        <li style="padding:8px 0;">Con adeguato spazio di isolamento</li>
+      </ul>
+    </div>
+    <div class="comp-card">
+      <h4 style="color:var(--red)">✗ Usi vietati</h4>
+      <ul style="list-style:none; font-size:14px; color:var(--text);">
+        <li style="padding:8px 0; border-bottom:1px solid var(--grey-light);">Non distorcere o ruotare il logo</li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--grey-light);">Non cambiare i colori</li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--grey-light);">Non applicare ombre o effetti</li>
+        <li style="padding:8px 0;">Non usare su sfondi fotografici ad alto contrasto</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 02 COLORI -->
+<section id="colori">
+  <div class="section-label">02 — Palette colori</div>
+  <h2 class="section-title">Il linguaggio cromatico</h2>
+  <p class="section-desc">Navy profondo e rosso signature sono le fondamenta. Il warm-white aggiunge calore e leggibilità. Questi colori non sono intercambiabili — ogni tono ha un ruolo preciso.</p>
+
+  <div class="color-grid">
+    <div class="color-chip">
+      <div class="color-chip-swatch" style="background:#0B1F3A"></div>
+      <div class="color-chip-info">
+        <div class="color-chip-name">BLC Navy</div>
+        <div class="color-chip-hex">#0B1F3A</div>
+        <div class="color-chip-role">Primario · Autorevolezza</div>
+      </div>
+    </div>
+    <div class="color-chip">
+      <div class="color-chip-swatch" style="background:#C8102E"></div>
+      <div class="color-chip-info">
+        <div class="color-chip-name">BLC Red</div>
+        <div class="color-chip-hex">#C8102E</div>
+        <div class="color-chip-role">Accento · Identità</div>
+      </div>
+    </div>
+    <div class="color-chip">
+      <div class="color-chip-swatch" style="background:#F5F3EE"></div>
+      <div class="color-chip-info">
+        <div class="color-chip-name">Warm White</div>
+        <div class="color-chip-hex">#F5F3EE</div>
+        <div class="color-chip-role">Sfondo · Calore</div>
+      </div>
+    </div>
+    <div class="color-chip">
+      <div class="color-chip-swatch" style="background:#2A5298"></div>
+      <div class="color-chip-info">
+        <div class="color-chip-name">BLC Steel</div>
+        <div class="color-chip-hex">#2A5298</div>
+        <div class="color-chip-role">Digital · Link</div>
+      </div>
+    </div>
+    <div class="color-chip">
+      <div class="color-chip-swatch" style="background:#8A96A3"></div>
+      <div class="color-chip-info">
+        <div class="color-chip-name">Slate Grey</div>
+        <div class="color-chip-hex">#8A96A3</div>
+        <div class="color-chip-role">Testo secondario</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tints row -->
+  <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:16px; margin-bottom:48px;">
+    <div class="color-chip">
+      <div class="color-chip-swatch" style="background:#1E3A5F"></div>
+      <div class="color-chip-info">
+        <div class="color-chip-name">Navy Mid</div>
+        <div class="color-chip-hex">#1E3A5F</div>
+        <div class="color-chip-role">Navy 75%</div>
+      </div>
+    </div>
+    <div class="color-chip">
+      <div class="color-chip-swatch" style="background:#4A6FA5"></div>
+      <div class="color-chip-info">
+        <div class="color-chip-name">Navy Light</div>
+        <div class="color-chip-hex">#4A6FA5</div>
+        <div class="color-chip-role">Navy 40%</div>
+      </div>
+    </div>
+    <div class="color-chip">
+      <div class="color-chip-swatch" style="background:#FDEEF1"></div>
+      <div class="color-chip-info">
+        <div class="color-chip-name">Red Light</div>
+        <div class="color-chip-hex">#FDEEF1</div>
+        <div class="color-chip-role">Red 8%</div>
+      </div>
+    </div>
+    <div class="color-chip">
+      <div class="color-chip-swatch" style="background:#E8EDF5"></div>
+      <div class="color-chip-info">
+        <div class="color-chip-name">Steel Light</div>
+        <div class="color-chip-hex">#E8EDF5</div>
+        <div class="color-chip-role">Steel 12%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Color combos -->
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+    <div style="background:var(--navy); border-radius:var(--r-lg); padding:32px;">
+      <div style="font-family:var(--ff-head);font-size:24px;font-weight:700;color:white;margin-bottom:8px;">Aa</div>
+      <div style="font-family:var(--ff-head);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);">Navy su White · AA ✓</div>
+    </div>
+    <div style="background:var(--red); border-radius:var(--r-lg); padding:32px;">
+      <div style="font-family:var(--ff-head);font-size:24px;font-weight:700;color:white;margin-bottom:8px;">Aa</div>
+      <div style="font-family:var(--ff-head);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);">Red su White · AA ✓</div>
+    </div>
+    <div style="background:var(--warm-white); border-radius:var(--r-lg); padding:32px; border:1px solid rgba(0,0,0,.06);">
+      <div style="font-family:var(--ff-head);font-size:24px;font-weight:700;color:var(--navy);margin-bottom:8px;">Aa</div>
+      <div style="font-family:var(--ff-head);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--grey);">Navy su Warm-White · AAA ✓</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 03 TIPOGRAFIA -->
+<section id="tipografia">
+  <div class="section-label">03 — Tipografia</div>
+  <h2 class="section-title">Le voci del brand</h2>
+  <p class="section-desc">Space Grotesk porta rigore geometrico e modernità svizzera. DM Sans aggiunge calore umano e leggibilità per i testi lunghi. Entrambi disponibili gratuitamente su Google Fonts.</p>
+
+  <div class="font-families">
+    <div class="font-card">
+      <div class="font-card-role">Heading Typeface</div>
+      <div class="font-card-name">Space Grotesk</div>
+      <div class="font-card-desc">Geometrica, precisa, contemporanea. Per titoli, etichette, navigazione e qualsiasi testo che richiede autorevolezza.</div>
+      <div class="font-card-specimen-head">BLC — Lugano<br><span style="color:var(--red);">2025</span></div>
+      <div class="font-weights">
+        <div class="weight-item">400 Regular</div>
+        <div class="weight-item">500 Medium</div>
+        <div class="weight-item">600 SemiBold</div>
+        <div class="weight-item" style="font-weight:700;color:var(--navy)">700 Bold</div>
+      </div>
+    </div>
+    <div class="font-card">
+      <div class="font-card-role">Body Typeface</div>
+      <div class="font-card-name">DM Sans</div>
+      <div class="font-card-desc">Umanista, accessibile, piacevole da leggere. Per corpi di testo, descrizioni di corsi, comunicazioni istituzionali.</div>
+      <div class="font-card-specimen-body">Formiamo professionisti pronti per il mercato del lavoro digitale di oggi e di domani.</div>
+      <div class="font-weights">
+        <div class="weight-item">300 Light</div>
+        <div class="weight-item">400 Regular</div>
+        <div class="weight-item" style="font-weight:500;color:var(--navy)">500 Medium</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="type-scale">
+    <div class="type-row">
+      <div class="type-meta">Display</div>
+      <div class="type-specimen" style="font-family:var(--ff-head);font-size:56px;font-weight:700;color:var(--navy);line-height:1.05;letter-spacing:-.02em;">Il futuro parte qui.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">H1 · 40px</div>
+      <div class="type-specimen" style="font-family:var(--ff-head);font-size:40px;font-weight:700;color:var(--navy);line-height:1.1;letter-spacing:-.02em;">Corsi di Formazione</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">H2 · 28px</div>
+      <div class="type-specimen" style="font-family:var(--ff-head);font-size:28px;font-weight:600;color:var(--navy);">Intelligenza Artificiale per Professionisti</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">H3 · 20px</div>
+      <div class="type-specimen" style="font-family:var(--ff-head);font-size:20px;font-weight:600;color:var(--navy);">Corso base di Contabilità Generale</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">Body · 16px</div>
+      <div class="type-specimen" style="font-family:var(--ff-body);font-size:16px;color:var(--text);line-height:1.7;">BLC forma professionisti con metodi pratici e docenti attivi nel settore. Ogni corso è calibrato sulle reali esigenze del mercato ticinese.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">Label · 11px</div>
+      <div class="type-specimen" style="font-family:var(--ff-head);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--red);">Certificazione ISO 21001:2019</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 04 COMPONENTI -->
+<section id="componenti">
+  <div class="section-label">04 — Componenti</div>
+  <h2 class="section-title">Elementi dell'interfaccia</h2>
+  <p class="section-desc">Bottoni, badge e card seguono un sistema coerente. Il rosso è riservato alle azioni primarie — call-to-action per iscriversi ai corsi o richiedere informazioni.</p>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <h4>Bottoni</h4>
+      <div class="btn-row" style="margin-bottom:20px">
+        <button class="btn btn-primary">Iscriviti al corso</button>
+        <button class="btn btn-secondary">Scopri di più</button>
+      </div>
+      <div class="btn-row" style="margin-bottom:20px">
+        <button class="btn btn-outline">Richiedi info</button>
+        <button class="btn btn-ghost">Scarica PDF</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary btn-sm">Small</button>
+        <button class="btn btn-primary">Default</button>
+        <button class="btn btn-primary btn-lg">Large</button>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <h4>Badge & Etichette</h4>
+      <div class="badge-row">
+        <span class="badge badge-red">AI</span>
+        <span class="badge badge-red">Micro-crisi</span>
+        <span class="badge badge-navy">Lingue</span>
+        <span class="badge badge-steel">ISO 21001</span>
+      </div>
+      <div class="badge-row">
+        <span class="badge badge-navy">Contabilità</span>
+        <span class="badge badge-steel">Online</span>
+        <span class="badge badge-red">Nuovo</span>
+      </div>
+      <div style="margin-top:16px; padding:16px; background:var(--warm-white); border-radius:var(--r); display:flex; align-items:center; gap:12px;">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0;"></div>
+        <span style="font-family:var(--ff-head);font-size:13px;font-weight:500;color:var(--navy);">Posti limitati — iscrizioni aperte</span>
+      </div>
+    </div>
+
+    <div class="comp-card" style="grid-column:1/-1">
+      <h4>Corso Card</h4>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+        <div class="card-example">
+          <div class="card-header-ex">
+            <div class="card-icon">
+              <svg width="20" height="20" fill="none" stroke="#C8102E" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div>
+              <div class="card-header-title">AI per il lavoro</div>
+              <div class="card-header-sub">Informatica avanzata</div>
+            </div>
+          </div>
+          <div class="card-body-ex">
+            <div class="badge-row"><span class="badge badge-red">AI</span><span class="badge badge-steel">Online</span></div>
+            <p>ChatGPT, Copilot e automazione dei workflow professionali. Pratico, immediato, misurabile.</p>
+            <button class="btn btn-primary btn-sm">Scopri il corso →</button>
+          </div>
+        </div>
+        <div class="card-example">
+          <div class="card-header-ex">
+            <div class="card-icon">
+              <svg width="20" height="20" fill="none" stroke="#C8102E" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <div>
+              <div class="card-header-title">Tedesco B2</div>
+              <div class="card-header-sub">Lingue straniere</div>
+            </div>
+          </div>
+          <div class="card-body-ex">
+            <div class="badge-row"><span class="badge badge-navy">Lingue</span><span class="badge badge-steel">In aula</span></div>
+            <p>Tedesco professionale per il mercato svizzero. Docenti madrelingua certificati.</p>
+            <button class="btn btn-primary btn-sm">Scopri il corso →</button>
+          </div>
+        </div>
+        <div class="card-example">
+          <div class="card-header-ex">
+            <div class="card-icon">
+              <svg width="20" height="20" fill="none" stroke="#C8102E" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div>
+              <div class="card-header-title">Gestione Micro-crisi</div>
+              <div class="card-header-sub">Safety & Security</div>
+            </div>
+          </div>
+          <div class="card-body-ex">
+            <div class="badge-row"><span class="badge badge-red">Micro-crisi</span><span class="badge badge-navy">Aziende</span></div>
+            <p>Gestire l'aggressività crescente e la sicurezza personale in ambienti professionali.</p>
+            <button class="btn btn-primary btn-sm">Scopri il corso →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 05 VOCE -->
+<section id="voce">
+  <div class="section-label">05 — Tono di voce & Messaging</div>
+  <h2 class="section-title">Come parliamo</h2>
+  <p class="section-desc">BLC è autorevole senza essere fredda, precisa senza essere burocratica. Ogni comunicazione deve trasmettere competenza reale e risultati concreti.</p>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <h4>Autorevole</h4>
+      <p>Parla con la voce di chi ha 17 anni di esperienza. Afferma, non vende.</p>
+    </div>
+    <div class="voice-card">
+      <h4>Concreto</h4>
+      <p>Zero luoghi comuni. Ogni messaggio ha un'azione chiara, un beneficio misurabile.</p>
+    </div>
+    <div class="voice-card">
+      <h4>Svizzero</h4>
+      <p>Precisione, rispetto dei tempi, qualità certificata. Lo standard che il mercato ci chiede.</p>
+    </div>
+    <div class="voice-card">
+      <h4>Umano</h4>
+      <p>Formiamo persone, non numeri. Il risultato del singolo è il nostro successo.</p>
+    </div>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-dont-col do">
+      <h4>Scrivere così</h4>
+      <ul>
+        <li>Impara l'AI in 2 giorni. Applicala da lunedì.</li>
+        <li>Docenti attivi nel settore — non solo in aula.</li>
+        <li>Corsi certificati ISO 21001:2019.</li>
+        <li>Posti limitati per garantire la qualità.</li>
+        <li>Ticino. Da 17 anni.</li>
+      </ul>
+    </div>
+    <div class="do-dont-col dont">
+      <h4>Non scrivere così</h4>
+      <ul>
+        <li>Soluzioni formative innovative ed all'avanguardia.</li>
+        <li>Scopri il tuo potenziale illimitato!</li>
+        <li>Il leader incontrastato della formazione.</li>
+        <li>Corsi per tutti, subito, online!</li>
+        <li>Clicca qui per saperne di più!!!</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tagline usage -->
+  <div style="background:var(--navy); border-radius:var(--r-lg); padding:64px; text-align:center; margin-bottom:32px;">
+    <div style="font-family:var(--ff-head);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:24px;">Tagline ufficiale</div>
+    <div style="font-family:var(--ff-head);font-size:52px;font-weight:700;color:var(--white);letter-spacing:-.02em;line-height:1.1;">Competenze <span style="color:var(--red);">che contano.</span></div>
+    <div style="margin-top:32px;font-family:var(--ff-body);font-size:16px;color:rgba(255,255,255,.4);">Formazione professionale d'eccellenza · Lugano, Ticino</div>
+  </div>
+</section>
+
+</div>
+
+<!-- FOOTER -->
+<div class="bb-footer">
+  <div class="bb-footer-brand">B<span>L</span>C Business Learning Centre SA</div>
+  <div class="bb-footer-text">Brand Guidelines 2025 · Uso interno e partner autorizzati · blc-sa.ch</div>
+</div>
+
+</body>
+</html>

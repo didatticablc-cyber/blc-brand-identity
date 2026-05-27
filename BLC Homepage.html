@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLC Business Learning Centre SA — Formazione Professionale Lugano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #0B1F3A;
+    --navy-mid:   #1E3A5F;
+    --red:        #C8102E;
+    --red-light:  #FDEEF1;
+    --warm-white: #F5F3EE;
+    --white:      #FFFFFF;
+    --text:       #1A1A2E;
+    --grey:       #8A96A3;
+    --steel:      #2A5298;
+    --grey-light: #E8EDF5;
+    --ff-h: 'Space Grotesk', sans-serif;
+    --ff-b: 'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--ff-b); background: var(--white); color: var(--text); line-height: 1.6; }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    background: var(--navy);
+    padding: 8px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topbar span {
+    font-family: var(--ff-h);
+    font-size: 12px;
+    color: rgba(255,255,255,.5);
+    letter-spacing: .04em;
+  }
+  .topbar .iso-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.5);
+  }
+  .iso-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+
+  /* ── NAV ── */
+  header {
+    position: sticky; top: 0;
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,.07);
+    z-index: 100;
+    padding: 0 80px;
+    display: flex;
+    align-items: center;
+    height: 72px;
+    gap: 48px;
+  }
+  .logo { display: flex; align-items: center; }
+  .logo img { height: 36px; }
+  nav.main-nav { display: flex; gap: 32px; margin: 0 auto; }
+  nav.main-nav a {
+    font-family: var(--ff-h);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: .02em;
+    transition: color .2s;
+  }
+  nav.main-nav a:hover { color: var(--red); }
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .btn {
+    font-family: var(--ff-h);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .2s;
+    display: inline-block;
+  }
+  .btn-primary { background: var(--red); color: var(--white); border: none; }
+  .btn-primary:hover { background: #a30d24; }
+  .btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
+  .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 80px;
+    gap: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -50px; top: 50%;
+    transform: translateY(-50%);
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,16,46,.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    left: 40%; top: 0;
+    width: 1px; height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(200,16,46,.15), transparent);
+  }
+  .hero-eyebrow {
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: var(--ff-h);
+    font-size: clamp(40px, 4.5vw, 72px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -.025em;
+    margin-bottom: 28px;
+  }
+  .hero h1 em { font-style: normal; color: var(--red); }
+  .hero-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,.55);
+    margin-bottom: 48px;
+    max-width: 460px;
+    line-height: 1.7;
+  }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-link {
+    font-family: var(--ff-h);
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,.5);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .hero-link:hover { color: var(--white); }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,.06);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 60px;
+  }
+  .stat-cell {
+    padding: 32px 28px;
+    background: rgba(255,255,255,.04);
+  }
+  .stat-num {
+    font-family: var(--ff-h);
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-num em { font-style: normal; color: var(--red); }
+  .stat-label {
+    font-family: var(--ff-h);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.35);
+  }
+
+  .hero-right {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--warm-white);
+    padding: 24px 80px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    border-bottom: 1px solid rgba(0,0,0,.07);
+  }
+  .trust-label {
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--grey);
+    white-space: nowrap;
+  }
+  .trust-logos { display: flex; gap: 40px; align-items: center; flex: 1; }
+  .trust-item {
+    font-family: var(--ff-h);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    opacity: .5;
+  }
+
+  /* ── CORSI SECTION ── */
+  .courses-section {
+    padding: 100px 80px;
+  }
+  .section-eyebrow {
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+  .section-h2 {
+    font-family: var(--ff-h);
+    font-size: clamp(28px, 3vw, 48px);
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 17px;
+    color: var(--grey);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+  }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .course-card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,.07);
+    background: var(--white);
+    transition: transform .2s, box-shadow .2s;
+    cursor: pointer;
+  }
+  .course-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(11,31,58,.1);
+  }
+  .course-card-top {
+    padding: 28px 24px 20px;
+    background: var(--navy);
+    position: relative;
+  }
+  .course-card-top.alt { background: var(--navy-mid); }
+  .course-icon-wrap {
+    width: 48px; height: 48px;
+    background: rgba(200,16,46,.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .course-card-cat {
+    font-family: var(--ff-h);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+    margin-bottom: 6px;
+  }
+  .course-card-title {
+    font-family: var(--ff-h);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .course-card-body { padding: 20px 24px; }
+  .course-card-desc {
+    font-size: 14px;
+    color: var(--grey);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+  .course-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .tag {
+    font-family: var(--ff-h);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: var(--grey-light);
+    color: var(--steel);
+  }
+  .tag.red { background: var(--red-light); color: var(--red); }
+  .course-link {
+    font-family: var(--ff-h);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--red);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap .2s;
+  }
+  .course-link:hover { gap: 10px; }
+
+  /* ── SPLIT SECTION ── */
+  .split-section {
+    background: var(--warm-white);
+    padding: 100px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+  .split-content .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--red-light);
+    color: var(--red);
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+
+  .differentiators {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .diff-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px;
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,.06);
+    transition: border-color .2s;
+  }
+  .diff-item:hover { border-color: var(--red); }
+  .diff-num {
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--red);
+    width: 28px;
+    height: 28px;
+    background: var(--red-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .diff-text h4 {
+    font-family: var(--ff-h);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .diff-text p { font-size: 14px; color: var(--grey); line-height: 1.6; }
+
+  /* ── TESTIMONIALS ── */
+  .testi-section {
+    padding: 100px 80px;
+    background: var(--white);
+  }
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .testi-card {
+    padding: 36px;
+    background: var(--warm-white);
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,.06);
+  }
+  .testi-quote {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+  .testi-quote::before { content: '"'; font-size: 40px; color: var(--red); font-style: normal; display: block; line-height: .8; margin-bottom: 12px; }
+  .testi-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .testi-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ff-h);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .testi-name {
+    font-family: var(--ff-h);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .testi-role { font-size: 12px; color: var(--grey); }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: var(--red);
+    padding: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .cta-banner h2 {
+    font-family: var(--ff-h);
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    max-width: 600px;
+  }
+  .btn-white {
+    font-family: var(--ff-h);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--red);
+    background: var(--white);
+    padding: 16px 36px;
+    border-radius: 4px;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all .2s;
+  }
+  .btn-white:hover { background: var(--warm-white); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 72px 80px 40px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 64px;
+  }
+  .footer-brand img { height: 36px; margin-bottom: 20px; display: block; }
+  .footer-brand p { font-size: 14px; color: rgba(255,255,255,.4); line-height: 1.7; max-width: 280px; }
+  .footer-col h5 {
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.35);
+    margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a {
+    font-size: 14px;
+    color: rgba(255,255,255,.55);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .footer-col ul li a:hover { color: var(--white); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-bottom p { font-size: 13px; color: rgba(255,255,255,.3); }
+  .footer-iso {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.3);
+  }
+  .iso-icon {
+    width: 28px; height: 28px;
+    border: 1.5px solid rgba(255,255,255,.2);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: rgba(255,255,255,.4);
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>📍 Via Zurigo 44, 6900 Lugano · Ticino, CH &nbsp;·&nbsp; +41 91 000 00 00</span>
+  <div class="iso-badge"><div class="iso-dot"></div> ISO 21001:2019 Certificato</div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <img src="BLC_HD.png" alt="BLC Business Learning Centre" onerror="this.outerHTML='<div style=\'font-family:Space Grotesk,sans-serif;font-size:22px;font-weight:700;color:#0B1F3A\'>B<span style=\'color:#C8102E\'>L</span>C</div>'">
+  </div>
+  <nav class="main-nav">
+    <a href="#">Corsi</a>
+    <a href="#">Aziende</a>
+    <a href="#">Orientamento</a>
+    <a href="#">Chi siamo</a>
+    <a href="#">Contatti</a>
+  </nav>
+  <div class="nav-cta">
+    <a href="#" class="btn btn-outline">Accedi</a>
+    <a href="#" class="btn btn-primary">Iscriviti →</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Formazione Professionale · Lugano, Ticino</div>
+    <h1>Competenze<br>che <em>contano.</em></h1>
+    <p class="hero-sub">Corsi certificati di AI, lingue, contabilità e gestione delle crisi. Docenti professionisti attivi. Classi piccole. Risultati misurabili.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn btn-primary" style="font-size:15px;padding:14px 32px;">Scopri i corsi →</a>
+      <a href="#" class="hero-link">Richiedi informazioni</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-cell">
+        <div class="stat-num">17<em>+</em></div>
+        <div class="stat-label">Anni di esperienza</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num"><em>ISO</em></div>
+        <div class="stat-label">21001:2019 Certificati</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">5<em>★</em></div>
+        <div class="stat-label">Docenti certificati</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">B2<em>B</em></div>
+        <div class="stat-label">Corsi su misura</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:32px;backdrop-filter:blur(8px);">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:20px;">Corsi più richiesti</div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:16px;border-left:3px solid #C8102E;">
+          <div style="font-size:20px;flex-shrink:0;">🤖</div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:white;">AI per Professionisti</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.4);">ChatGPT · Copilot · Automazione</div>
+          </div>
+          <div style="margin-left:auto;background:#C8102E;color:white;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;padding:3px 8px;border-radius:4px;text-transform:uppercase;">Nuovo</div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:16px;">
+          <div style="font-size:20px;flex-shrink:0;">🌍</div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:white;">Lingue Straniere</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.4);">DE · EN · FR · ES · IT</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:16px;">
+          <div style="font-size:20px;flex-shrink:0;">🛡️</div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:white;">Gestione Micro-crisi</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.4);">Safety · De-escalation</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:16px;">
+          <div style="font-size:20px;flex-shrink:0;">📊</div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:white;">Contabilità Generale</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.4);">Base · Intermedio · Avanzato</div>
+          </div>
+        </div>
+      </div>
+      <a href="#" style="display:block;margin-top:20px;text-align:center;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.5);text-decoration:none;">Vedi tutti i corsi →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-label">Formano con BLC</div>
+  <div class="trust-logos">
+    <div class="trust-item">Farmacie Ticinesi</div>
+    <div class="trust-item">Banche Regionali</div>
+    <div class="trust-item">Ospedali Cantonali</div>
+    <div class="trust-item">Uffici Federali</div>
+    <div class="trust-item">Studi Legali</div>
+    <div class="trust-item">Industria &amp; Manifattura</div>
+  </div>
+</div>
+
+<!-- CORSI -->
+<section class="courses-section">
+  <div class="section-eyebrow">02 — Offerta formativa</div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;">
+    <div>
+      <h2 class="section-h2">I corsi che<br>cambiano la carriera.</h2>
+      <p class="section-sub">Programmi pratici, docenti attivi nel settore, risultati applicabili dal giorno dopo.</p>
+    </div>
+    <a href="#" class="btn btn-outline">Vedi tutti i corsi</a>
+  </div>
+
+  <div class="courses-grid">
+    <div class="course-card">
+      <div class="course-card-top">
+        <div class="course-icon-wrap">
+          <svg width="24" height="24" fill="none" stroke="#C8102E" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 10l2 2 4-4"/></svg>
+        </div>
+        <div class="course-card-cat">Informatica &amp; Digitale</div>
+        <div class="course-card-title">AI per Professionisti</div>
+      </div>
+      <div class="course-card-body">
+        <div class="course-tags">
+          <span class="tag red">Nuovo</span>
+          <span class="tag">Online</span>
+          <span class="tag">16h</span>
+        </div>
+        <p class="course-card-desc">ChatGPT, Copilot e automazione dei workflow. Impara ad usare l'AI per moltiplicare la tua produttività.</p>
+        <a href="#" class="course-link">Scopri il corso →</a>
+      </div>
+    </div>
+    <div class="course-card">
+      <div class="course-card-top alt">
+        <div class="course-icon-wrap">
+          <svg width="24" height="24" fill="none" stroke="#C8102E" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+        </div>
+        <div class="course-card-cat">Lingue Straniere</div>
+        <div class="course-card-title">Inglese, Tedesco, Francese</div>
+      </div>
+      <div class="course-card-body">
+        <div class="course-tags">
+          <span class="tag">A1 → C2</span>
+          <span class="tag">Business</span>
+          <span class="tag">In aula</span>
+        </div>
+        <p class="course-card-desc">Dalla lingua generale al business. Docenti madrelingua, percorsi personalizzati per il mercato svizzero.</p>
+        <a href="#" class="course-link">Scopri il corso →</a>
+      </div>
+    </div>
+    <div class="course-card">
+      <div class="course-card-top">
+        <div class="course-icon-wrap">
+          <svg width="24" height="24" fill="none" stroke="#C8102E" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="course-card-cat">Safety &amp; Security</div>
+        <div class="course-card-title">Gestione Micro-crisi</div>
+      </div>
+      <div class="course-card-body">
+        <div class="course-tags">
+          <span class="tag red">Top</span>
+          <span class="tag">Aziende</span>
+          <span class="tag">8h</span>
+        </div>
+        <p class="course-card-desc">De-escalation, gestione dell'aggressività, auto-protezione in contesti professionali a rischio.</p>
+        <a href="#" class="course-link">Scopri il corso →</a>
+      </div>
+    </div>
+    <div class="course-card">
+      <div class="course-card-top alt">
+        <div class="course-icon-wrap">
+          <svg width="24" height="24" fill="none" stroke="#C8102E" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="course-card-cat">Finanza &amp; Contabilità</div>
+        <div class="course-card-title">Contabilità Generale</div>
+      </div>
+      <div class="course-card-body">
+        <div class="course-tags">
+          <span class="tag">Base</span>
+          <span class="tag">CH Standard</span>
+          <span class="tag">24h</span>
+        </div>
+        <p class="course-card-desc">Partita doppia, piano dei conti, bilancio. Gli standard svizzeri per chi lavora in ambito fiduciario o aziendale.</p>
+        <a href="#" class="course-link">Scopri il corso →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT: WHY BLC -->
+<div class="split-section">
+  <div class="split-content">
+    <div class="section-eyebrow">03 — Perché BLC</div>
+    <h2 class="section-h2">Standard svizzeri.<br>Risultati concreti.</h2>
+    <p style="font-size:17px;color:var(--grey);line-height:1.7;margin-bottom:40px;">Non siamo una piattaforma online. Siamo un centro di formazione professionale radicato nel Ticino, con 17 anni di esperienza e la certificazione ISO 21001:2019 che garantisce ogni percorso.</p>
+    <a href="#" class="btn btn-primary" style="font-size:15px;padding:14px 32px;">Scopri chi siamo →</a>
+  </div>
+  <div class="differentiators">
+    <div class="diff-item">
+      <div class="diff-num">01</div>
+      <div class="diff-text">
+        <h4>Docenti professionisti</h4>
+        <p>Min. 5 anni di esperienza certificata nell'educazione degli adulti. Attivi nel settore che insegnano.</p>
+      </div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-num">02</div>
+      <div class="diff-text">
+        <h4>Classi piccole per davvero</h4>
+        <p>Posti limitati per garantire attenzione individuale e ritmo calibrato sul gruppo reale.</p>
+      </div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-num">03</div>
+      <div class="diff-text">
+        <h4>Certificazione ISO 21001:2019</h4>
+        <p>Qualità documentata, processi verificati da terzi. L'unico standard internazionale per le organizzazioni educative.</p>
+      </div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-num">04</div>
+      <div class="diff-text">
+        <h4>Applicabilità immediata</h4>
+        <p>Ogni corso è progettato con il metodo learning by doing. Si porta in ufficio dal primo giorno.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="section-eyebrow">04 — Testimonianze</div>
+  <h2 class="section-h2">Chi ha già scelto BLC.</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <p class="testi-quote">Il corso AI di BLC mi ha permesso di automatizzare tre ore di lavoro quotidiano in meno di una settimana dall'aula.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">MR</div>
+        <div>
+          <div class="testi-name">Marco Rossi</div>
+          <div class="testi-role">Responsabile HR, Azienda Farmaceutica</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <p class="testi-quote">Il tedesco che ho imparato da BLC mi ha aperto le porte di un ruolo che cercavo da due anni. Docente eccellente.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">AL</div>
+        <div>
+          <div class="testi-name">Anna Luisa Ferrari</div>
+          <div class="testi-role">Account Manager, Banca Luganese</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <p class="testi-quote">Abbiamo formato tutto il team operativo sulla gestione micro-crisi. Il ROI è stato immediato in termini di sicurezza sul lavoro.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">FT</div>
+        <div>
+          <div class="testi-name">Fabrizio Tognetti</div>
+          <div class="testi-role">Direttore Operativo, Trasporti Cantonali</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Pronto a investire nelle competenze che contano?</h2>
+  <a href="#" class="btn-white">Richiedi informazioni →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="blc_white_red.png" alt="BLC" onerror="this.outerHTML='<div style=\'font-family:Space Grotesk,sans-serif;font-size:24px;font-weight:700;color:white;margin-bottom:20px\'>B<span style=\'color:#C8102E\'>L</span>C</div>'">
+      <p>Formazione professionale certificata ISO 21001:2019 a Lugano, Ticino. Dal 2007 al fianco di aziende e professionisti.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Corsi</h5>
+      <ul>
+        <li><a href="#">AI e Digitale</a></li>
+        <li><a href="#">Lingue</a></li>
+        <li><a href="#">Micro-crisi</a></li>
+        <li><a href="#">Contabilità</a></li>
+        <li><a href="#">Soft Skills</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Aziende</h5>
+      <ul>
+        <li><a href="#">Formazione B2B</a></li>
+        <li><a href="#">Consulenza GDPR</a></li>
+        <li><a href="#">Sicurezza</a></li>
+        <li><a href="#">Orientamento</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>BLC</h5>
+      <ul>
+        <li><a href="#">Chi siamo</a></li>
+        <li><a href="#">ISO 21001</a></li>
+        <li><a href="#">Docenti</a></li>
+        <li><a href="#">Contatti</a></li>
+        <li><a href="#">blc-sa.ch</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 BLC Business Learning Centre SA · Via Zurigo 44, 6900 Lugano · Tutti i diritti riservati</p>
+    <div class="footer-iso">
+      <div class="iso-icon">ISO</div>
+      21001:2019 Certificato
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

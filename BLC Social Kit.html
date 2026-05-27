@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLC — Social Media Kit 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1F3A; --navy-mid: #1E3A5F;
+    --red: #C8102E; --red-light: #FDEEF1;
+    --warm-white: #F5F3EE; --white: #FFFFFF;
+    --text: #1A1A2E; --grey: #8A96A3;
+    --steel: #2A5298; --grey-light: #E8EDF5;
+    --ff-h: 'Space Grotesk',sans-serif;
+    --ff-b: 'DM Sans',sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #DDDAD4; font-family: var(--ff-b); padding: 60px 40px; }
+
+  .kit-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+  .kit-header h1 {
+    font-family: var(--ff-h);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -.02em;
+    margin-bottom: 8px;
+  }
+  .kit-header h1 span { color: var(--red); }
+  .kit-header p { font-size: 14px; color: var(--grey); }
+
+  .section-label {
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,.4);
+    margin-bottom: 24px;
+    padding-left: 4px;
+  }
+  .templates-block { margin-bottom: 72px; }
+
+  /* LINKEDIN COVER 1584x396 → scale 0.4: 633x158 */
+  .linkedin-cover {
+    width: 1128px;
+    height: 191px;
+    transform-origin: top left;
+    transform: scale(0.55);
+    margin-bottom: calc(191px * 0.55 - 191px);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    background: var(--navy);
+    box-shadow: 0 8px 32px rgba(0,0,0,.2);
+  }
+  .linkedin-cover::before {
+    content: '';
+    position: absolute;
+    right: -80px; top: 50%;
+    transform: translateY(-50%);
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,16,46,.15) 0%, transparent 70%);
+  }
+  .linkedin-cover .bar { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: var(--red); }
+  .linkedin-cover .content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+  }
+  .linkedin-cover .left { display: flex; flex-direction: column; gap: 8px; }
+  .linkedin-cover .logo-text { font-family: var(--ff-h); font-size: 36px; font-weight: 700; color: white; }
+  .linkedin-cover .logo-text span { color: var(--red); }
+  .linkedin-cover .tagline { font-family: var(--ff-h); font-size: 18px; color: rgba(255,255,255,.55); }
+  .linkedin-cover .right { display: flex; gap: 48px; align-items: center; }
+  .linkedin-cover .item { text-align: center; }
+  .linkedin-cover .item .n { font-family: var(--ff-h); font-size: 32px; font-weight: 700; color: white; }
+  .linkedin-cover .item .n em { color: var(--red); font-style: normal; }
+  .linkedin-cover .item .l { font-family: var(--ff-h); font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); }
+
+  /* POST SQUARE 1080x1080 → 320x320 */
+  .posts-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .post-sq {
+    width: 320px;
+    height: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0,0,0,.18);
+    flex-shrink: 0;
+  }
+
+  /* Post 1: Course announcement */
+  .post-announce {
+    background: var(--navy);
+  }
+  .post-announce::before {
+    content: '';
+    position: absolute;
+    right: -40px; bottom: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,16,46,.2) 0%, transparent 70%);
+  }
+  .post-announce .accent { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--red); }
+  .post-announce .inner {
+    position: relative; z-index: 1;
+    padding: 28px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .post-announce .top {}
+  .post-chip {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-family: var(--ff-h);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .post-announce .post-title {
+    font-family: var(--ff-h);
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.15;
+    letter-spacing: -.01em;
+    margin-bottom: 8px;
+  }
+  .post-announce .post-sub { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.5; }
+  .post-announce .bottom { display: flex; align-items: center; justify-content: space-between; }
+  .post-announce .blc-mark { font-family: var(--ff-h); font-size: 18px; font-weight: 700; color: white; }
+  .post-announce .blc-mark span { color: var(--red); }
+  .post-announce .cta-arrow {
+    font-family: var(--ff-h); font-size: 12px; font-weight: 600;
+    color: rgba(255,255,255,.6); letter-spacing: .06em;
+  }
+
+  /* Post 2: Quote / stat */
+  .post-stat {
+    background: var(--red);
+  }
+  .post-stat .inner {
+    padding: 28px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .post-stat::before {
+    content: '';
+    position: absolute;
+    right: -30px; top: -30px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.08);
+  }
+  .post-stat .big-num {
+    font-family: var(--ff-h);
+    font-size: 88px;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+    letter-spacing: -.04em;
+  }
+  .post-stat .big-num em { font-style: normal; font-size: 48px; }
+  .post-stat .stat-text {
+    font-family: var(--ff-h);
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(255,255,255,.9);
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .post-stat .stat-sub { font-size: 13px; color: rgba(255,255,255,.55); }
+  .post-stat .blc-mark { font-family: var(--ff-h); font-size: 16px; font-weight: 700; color: rgba(255,255,255,.7); }
+
+  /* Post 3: Tip / contenuto */
+  .post-tip {
+    background: var(--warm-white);
+    border: 1px solid rgba(0,0,0,.08);
+  }
+  .post-tip .inner { padding: 28px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+  .post-tip .chip {
+    display: inline-block;
+    background: var(--red-light);
+    color: var(--red);
+    font-family: var(--ff-h);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .post-tip .post-title { font-family: var(--ff-h); font-size: 22px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 12px; }
+  .post-tip .tip-items { display: flex; flex-direction: column; gap: 8px; }
+  .post-tip .tip-item { display: flex; gap: 8px; align-items: flex-start; }
+  .post-tip .tip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); flex-shrink: 0; margin-top: 5px; }
+  .post-tip .tip-item p { font-size: 13px; color: var(--text); line-height: 1.5; }
+  .post-tip .bottom { display: flex; align-items: center; justify-content: space-between; }
+  .post-tip .blc-mark { font-family: var(--ff-h); font-size: 15px; font-weight: 700; color: var(--navy); }
+  .post-tip .blc-mark span { color: var(--red); }
+  .post-tip .iso { font-family: var(--ff-h); font-size: 9px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); }
+
+  /* Post 4: Event / corso aperto */
+  .post-event {
+    background: var(--navy-mid);
+  }
+  .post-event .top-stripe {
+    background: var(--red);
+    padding: 12px 28px;
+    font-family: var(--ff-h);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: white;
+  }
+  .post-event .inner { padding: 24px 28px 28px; height: calc(100% - 44px); display: flex; flex-direction: column; justify-content: space-between; }
+  .post-event .date {
+    font-family: var(--ff-h);
+    font-size: 44px;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+    letter-spacing: -.02em;
+    margin-bottom: 4px;
+  }
+  .post-event .date em { font-style: normal; font-size: 18px; color: rgba(255,255,255,.4); }
+  .post-event .event-title { font-family: var(--ff-h); font-size: 22px; font-weight: 700; color: white; line-height: 1.2; margin-bottom: 8px; }
+  .post-event .event-sub { font-size: 13px; color: rgba(255,255,255,.45); margin-bottom: 16px; }
+  .post-event .cta {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-family: var(--ff-h);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 6px;
+  }
+
+  /* STORY 1080x1920 → 180x320 */
+  .stories-row { display: flex; flex-wrap: wrap; gap: 24px; }
+  .story {
+    width: 180px;
+    height: 320px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0,0,0,.2);
+    flex-shrink: 0;
+  }
+
+  .story-1 { background: var(--navy); }
+  .story-1 .inner { padding: 20px 16px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+  .story-1::before { content: ''; position: absolute; right: -20px; bottom: -20px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(200,16,46,.2) 0%, transparent 70%); }
+  .story-1 .accent { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); }
+  .story-1 .s-chip { background: var(--red); color: white; font-family: var(--ff-h); font-size: 8px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; display: inline-block; margin-bottom: 8px; }
+  .story-1 .s-title { font-family: var(--ff-h); font-size: 20px; font-weight: 700; color: white; line-height: 1.15; letter-spacing: -.01em; position: relative; z-index: 1; }
+  .story-1 .s-sub { font-size: 10px; color: rgba(255,255,255,.45); margin-top: 6px; position: relative; z-index: 1; }
+  .story-1 .s-bottom { position: relative; z-index: 1; }
+  .story-1 .s-logo { font-family: var(--ff-h); font-size: 16px; font-weight: 700; color: white; }
+  .story-1 .s-logo span { color: var(--red); }
+  .story-1 .s-url { font-family: var(--ff-h); font-size: 9px; color: rgba(255,255,255,.35); }
+
+  .story-2 { background: var(--red); }
+  .story-2 .inner { padding: 20px 16px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+  .story-2::before { content: ''; position: absolute; right: -20px; top: -20px; width: 100px; height: 100px; border-radius: 50%; background: rgba(255,255,255,.1); }
+  .story-2 .big { font-family: var(--ff-h); font-size: 60px; font-weight: 700; color: white; line-height: 1; letter-spacing: -.03em; }
+  .story-2 .big em { font-style: normal; font-size: 28px; }
+  .story-2 .s-text { font-family: var(--ff-h); font-size: 15px; font-weight: 600; color: rgba(255,255,255,.9); line-height: 1.3; }
+  .story-2 .s-sub { font-size: 10px; color: rgba(255,255,255,.5); }
+  .story-2 .s-logo { font-family: var(--ff-h); font-size: 14px; font-weight: 700; color: rgba(255,255,255,.7); }
+
+  .story-3 { background: var(--warm-white); border: 1px solid rgba(0,0,0,.08); }
+  .story-3 .inner { padding: 20px 16px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+  .story-3 .s-chip { background: var(--red-light); color: var(--red); font-family: var(--ff-h); font-size: 8px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; display: inline-block; margin-bottom: 8px; }
+  .story-3 .s-title { font-family: var(--ff-h); font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.2; }
+  .story-3 .tip-list { display: flex; flex-direction: column; gap: 8px; }
+  .story-3 .tip-li { display: flex; gap: 6px; font-size: 10px; color: var(--text); line-height: 1.4; }
+  .story-3 .tip-li::before { content: '→'; color: var(--red); flex-shrink: 0; font-weight: 700; }
+  .story-3 .s-logo { font-family: var(--ff-h); font-size: 14px; font-weight: 700; color: var(--navy); }
+  .story-3 .s-logo span { color: var(--red); }
+
+  /* SPEC TABLE */
+  .spec-note {
+    background: white;
+    border-radius: 12px;
+    padding: 24px 32px;
+    margin-top: 24px;
+    font-family: var(--ff-h);
+    font-size: 12px;
+    color: var(--grey);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .spec-note .item strong { color: var(--navy); display: block; margin-bottom: 2px; }
+</style>
+</head>
+<body>
+
+<div class="kit-header">
+  <h1>BLC <span>Social</span> Kit — 2025</h1>
+  <p>Template LinkedIn · Instagram · Facebook · 1:1 Post · Story 9:16</p>
+</div>
+
+<!-- LINKEDIN COVER -->
+<div class="templates-block">
+  <div class="section-label">LinkedIn — Cover Image (1584 × 396 px)</div>
+  <div class="linkedin-cover">
+    <div class="bar"></div>
+    <div class="content">
+      <div class="left">
+        <div class="logo-text">B<span>L</span>C</div>
+        <div class="tagline">Competenze che contano · Lugano, Ticino</div>
+      </div>
+      <div class="right">
+        <div class="item"><div class="n">17<em>+</em></div><div class="l">Anni</div></div>
+        <div class="item"><div class="n">ISO</div><div class="l">21001</div></div>
+        <div class="item"><div class="n">AI<em>+</em></div><div class="l">Lingue · Microcrisi</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="spec-note">
+    <div class="item"><strong>Formato</strong>1584 × 396 px · JPG</div>
+    <div class="item"><strong>Uso</strong>Cover page LinkedIn aziendale</div>
+    <div class="item"><strong>Note</strong>Lasciare area sinistra libera — LinkedIn taglia su mobile</div>
+  </div>
+</div>
+
+<!-- POST SQUARE -->
+<div class="templates-block">
+  <div class="section-label">Post quadrato 1:1 (1080 × 1080 px) — 4 template</div>
+  <div class="posts-row">
+
+    <!-- POST 1: Annuncio corso -->
+    <div class="post-sq post-announce">
+      <div class="accent"></div>
+      <div class="inner">
+        <div class="top">
+          <div class="post-chip">Nuovo Corso</div>
+          <div class="post-title">AI per<br>Professionisti</div>
+          <div class="post-sub">ChatGPT · Copilot · Automazione<br>16 ore · Online e in aula</div>
+        </div>
+        <div class="bottom">
+          <div class="blc-mark">B<span>L</span>C</div>
+          <div class="cta-arrow">Iscriviti →</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST 2: Statistica -->
+    <div class="post-sq post-stat">
+      <div class="inner" style="position:relative;z-index:1;">
+        <div>
+          <div class="big-num">17<em>+</em></div>
+          <div class="stat-text">anni di formazione<br>professionale in Ticino.</div>
+          <div class="stat-sub">Dal 2007 · ISO 21001:2019</div>
+        </div>
+        <div class="blc-mark">BLC Business Learning Centre</div>
+      </div>
+    </div>
+
+    <!-- POST 3: Tip / contenuto -->
+    <div class="post-sq post-tip">
+      <div class="inner">
+        <div>
+          <div class="chip">Tip AI</div>
+          <div class="post-title">3 modi per usare<br>ChatGPT in ufficio</div>
+          <div class="tip-items">
+            <div class="tip-item"><div class="tip-dot"></div><p>Redigi email professionali in 30 secondi</p></div>
+            <div class="tip-item"><div class="tip-dot"></div><p>Riassumi documenti lunghi istantaneamente</p></div>
+            <div class="tip-item"><div class="tip-dot"></div><p>Crea report strutturati dai tuoi dati</p></div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="blc-mark">B<span>L</span>C</div>
+          <div class="iso">ISO 21001:2019</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST 4: Evento -->
+    <div class="post-sq post-event">
+      <div class="top-stripe">📅 Prossimo corso</div>
+      <div class="inner">
+        <div>
+          <div class="date">15 <em>Luglio</em></div>
+          <div class="event-title">Gestione<br>Micro-crisi</div>
+          <div class="event-sub">8 ore · In aula · Lugano<br>Posti limitati</div>
+        </div>
+        <div>
+          <div class="cta">Iscriviti ora</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spec-note">
+    <div class="item"><strong>Formato</strong>1080 × 1080 px · JPG/PNG</div>
+    <div class="item"><strong>Piattaforme</strong>LinkedIn · Instagram · Facebook</div>
+    <div class="item"><strong>Colori</strong>Navy #0B1F3A · Red #C8102E · Warm White #F5F3EE</div>
+    <div class="item"><strong>Font</strong>Space Grotesk Bold (titoli) · DM Sans (testi)</div>
+  </div>
+</div>
+
+<!-- STORIES -->
+<div class="templates-block">
+  <div class="section-label">Story verticale 9:16 (1080 × 1920 px) — 3 template</div>
+  <div class="stories-row">
+
+    <div class="story story-1">
+      <div class="accent"></div>
+      <div class="inner">
+        <div>
+          <div class="s-chip">Nuovo Corso</div>
+          <div class="s-title">AI per<br>Profes-<br>sionisti</div>
+          <div class="s-sub">ChatGPT · Copilot<br>Automazione workflow</div>
+        </div>
+        <div class="s-bottom">
+          <div class="s-logo">B<span>L</span>C</div>
+          <div class="s-url">blc-sa.ch</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="story story-2">
+      <div class="inner" style="position:relative;z-index:1;">
+        <div>
+          <div class="big">17<em>+</em></div>
+        </div>
+        <div>
+          <div class="s-text">anni di formazione professionale in Ticino.</div>
+          <div class="s-sub" style="margin-top:6px;">ISO 21001:2019 · Dal 2007</div>
+        </div>
+        <div class="s-logo">BLC</div>
+      </div>
+    </div>
+
+    <div class="story story-3">
+      <div class="inner">
+        <div>
+          <div class="s-chip">Lingue</div>
+          <div class="s-title">5 lingue,<br>infinite<br>opportunità.</div>
+        </div>
+        <div class="tip-list">
+          <div class="tip-li">Inglese business</div>
+          <div class="tip-li">Tedesco per il mercato CH</div>
+          <div class="tip-li">Francese professionale</div>
+          <div class="tip-li">Spagnolo</div>
+          <div class="tip-li">Italiano per stranieri</div>
+        </div>
+        <div>
+          <div class="s-logo">B<span>L</span>C</div>
+          <div style="font-family:var(--ff-h);font-size:9px;color:var(--grey);">blc-sa.ch</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="spec-note">
+    <div class="item"><strong>Formato</strong>1080 × 1920 px · JPG</div>
+    <div class="item"><strong>Piattaforme</strong>Instagram Stories · LinkedIn Stories · Facebook Stories</div>
+    <div class="item"><strong>Area sicura</strong>Evitare testo nei 250px superiori e inferiori (UI piattaforma)</div>
+  </div>
+</div>
+
+</body>
+</html>
